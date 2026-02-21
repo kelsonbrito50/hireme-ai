@@ -11,6 +11,15 @@ jobs:
     name: Lint · Type-check · Build
     runs-on: ubuntu-latest
 
+    env:
+      # Dummy values for build — real secrets live in Vercel, not here
+      DATABASE_URL: "postgresql://ci:ci@localhost:5432/ci?sslmode=disable"
+      NEXTAUTH_SECRET: "ci-secret-not-real"
+      NEXTAUTH_URL: "http://localhost:3000"
+      GITHUB_ID: "ci-github-id"
+      GITHUB_SECRET: "ci-github-secret"
+      OPENAI_API_KEY: "sk-ci-not-real"
+
     steps:
       - uses: actions/checkout@v4
 

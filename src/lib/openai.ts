@@ -1,16 +1,18 @@
 import OpenAI from "openai";
 
-if (!process.env.OPENAI_API_KEY) {
-  throw new Error(
-    "Missing OPENAI_API_KEY environment variable. " +
-      "Get one at https://platform.openai.com/api-keys"
-  );
+/**
+ * Returns a lazily-initialized OpenAI client.
+ * Throws at call time (not build time) if the key is missing.
+ */
+function getClient(): OpenAI {
+  if (!process.env.OPENAI_API_KEY) {
+    throw new Error(
+      "Missing OPENAI_API_KEY environment variable. " +
+        "Get one at https://platform.openai.com/api-keys"
+    );
+  }
+  return new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 }
-
-/** Singleton OpenAI client */
-export const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
 
 // ─── Skill Analysis ─────────────────────────────────────────────────────────
 
@@ -29,7 +31,7 @@ export async function analyzeJobDescription(
   jobDescription: string,
   userSkills: string[]
 ): Promise<AnalysisResult> {
-  const response = await openai.chat.completions.create({
+  const response = await getClient().chat.completions.create({
     model: "gpt-4",
     temperature: 0.3,
     messages: [
@@ -73,7 +75,7 @@ export async function generateCoverLetter(params: {
   userSkills: string[];
   userName?: string;
 }): Promise<string> {
-  const response = await openai.chat.completions.create({
+  const response = await getClient().chat.completions.create({
     model: "gpt-4",
     temperature: 0.7,
     messages: [
