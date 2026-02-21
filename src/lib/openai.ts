@@ -32,7 +32,7 @@ export async function analyzeJobDescription(
   userSkills: string[]
 ): Promise<AnalysisResult> {
   const response = await getClient().chat.completions.create({
-    model: "gpt-4",
+    model: "gpt-4o-mini",
     temperature: 0.3,
     messages: [
       {
@@ -76,7 +76,7 @@ export async function generateCoverLetter(params: {
   userName?: string;
 }): Promise<string> {
   const response = await getClient().chat.completions.create({
-    model: "gpt-4",
+    model: "gpt-4o-mini",
     temperature: 0.7,
     messages: [
       {

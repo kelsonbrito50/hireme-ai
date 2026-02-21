@@ -22,6 +22,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
     summary: string;
   } | null>(null);
   const [saved, setSaved] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,6 +31,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
     setLoading(true);
     setResult(null);
     setSaved(false);
+    setError(null);
 
     try {
       const res = await fetch("/api/analyze", {
@@ -38,12 +40,15 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
         body: JSON.stringify({ jobDescription }),
       });
 
+      const data = await res.json();
       if (res.ok) {
-        const data = await res.json();
         setResult(data);
+      } else {
+        setError(data.error ?? "Analysis failed. Try again.");
       }
     } catch (err) {
       console.error("Analysis failed:", err);
+      setError("Network error. Check your connection.");
     } finally {
       setLoading(false);
     }
@@ -144,6 +149,12 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
           {loading ? "Analyzing…" : "Analyze Job"}
         </button>
       </form>
+
+      {error && (
+        <div className="mt-4 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+          ❌ {error}
+        </div>
+      )}
 
       {/* Results */}
       {result && (
