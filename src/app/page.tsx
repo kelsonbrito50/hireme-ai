@@ -76,7 +76,7 @@ export default function LandingPage() {
             <span className="text-lg font-bold text-white">HireMe AI</span>
           </div>
           <button
-            onClick={() => signIn("github")}
+            onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
             className="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-slate-600 hover:bg-slate-700"
           >
             <Github className="h-4 w-4" />
@@ -106,14 +106,14 @@ export default function LandingPage() {
 
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <button
-              onClick={() => signIn("github")}
+              onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
               className="inline-flex items-center gap-2 rounded-xl bg-teal-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-teal-900/40 transition hover:bg-teal-400"
             >
               <Github className="h-5 w-5" />
               Get Started Free
             </button>
             <button
-              onClick={() => signIn("github")}
+              onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
               className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-800 px-8 py-3.5 text-base font-semibold text-slate-200 transition hover:border-slate-600 hover:bg-slate-700"
             >
               See Demo
@@ -207,7 +207,7 @@ export default function LandingPage() {
             Join developers using HireMe AI to apply smarter, not harder.
           </p>
           <button
-            onClick={() => signIn("github")}
+            onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
             className="inline-flex items-center gap-2 rounded-xl bg-teal-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-teal-900/40 transition hover:bg-teal-400"
           >
             <Github className="h-5 w-5" />
