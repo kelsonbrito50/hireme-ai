@@ -5,7 +5,7 @@
   <img src="https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma&logoColor=white" alt="Prisma" />
   <img src="https://img.shields.io/badge/TailwindCSS-3-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind" />
   <img src="https://img.shields.io/github/license/kelsonbrito50/hireme-ai" alt="License" />
-  <a href="https://hireme-ai.vercel.app">
+  <a href="https://hireme-ai-rust.vercel.app">
     <img src="https://img.shields.io/badge/Live%20Demo-hireme--ai.vercel.app-00C7B7?logo=vercel&logoColor=white" alt="Live Demo" />
   </a>
 </p>
@@ -15,7 +15,7 @@
 <p align="center">
   <strong>AI-powered job application tracker with skill matching & cover letter generation.</strong><br />
   Paste a job description → get a match score, extracted skills, and a tailored cover letter in seconds.<br /><br />
-  🔗 <a href="https://hireme-ai.vercel.app"><strong>Live Demo → hireme-ai.vercel.app</strong></a>
+  🔗 <a href="https://hireme-ai-rust.vercel.app"><strong>Live Demo → hireme-ai-rust.vercel.app</strong></a>
 </p>
 
 ---
