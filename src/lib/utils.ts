@@ -15,15 +15,15 @@ export function formatDate(date: Date | string): string {
   }).format(new Date(date));
 }
 
-/** Get status color for badges */
+/** Get status color for badges (dark-theme) */
 export function getStatusColor(status: string): string {
   const colors: Record<string, string> = {
-    SAVED: "bg-gray-100 text-gray-800",
-    APPLIED: "bg-blue-100 text-blue-800",
-    INTERVIEWING: "bg-yellow-100 text-yellow-800",
-    OFFERED: "bg-green-100 text-green-800",
-    REJECTED: "bg-red-100 text-red-800",
-    WITHDRAWN: "bg-purple-100 text-purple-800",
+    SAVED: "bg-slate-500/20 text-slate-300",
+    APPLIED: "bg-blue-500/20 text-blue-300",
+    INTERVIEWING: "bg-amber-500/20 text-amber-300",
+    OFFERED: "bg-emerald-500/20 text-emerald-300",
+    REJECTED: "bg-red-500/20 text-red-400",
+    WITHDRAWN: "bg-purple-500/20 text-purple-300",
   };
-  return colors[status] ?? "bg-gray-100 text-gray-800";
+  return colors[status] ?? "bg-slate-500/20 text-slate-300";
 }

@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Next.js-14-black?logo=next.js" alt="Next.js" />
   <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/OpenAI-GPT--4-412991?logo=openai&logoColor=white" alt="OpenAI" />
+  <img src="https://img.shields.io/badge/OpenAI-GPT--4o--mini-412991?logo=openai&logoColor=white" alt="OpenAI" />
   <img src="https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma&logoColor=white" alt="Prisma" />
   <img src="https://img.shields.io/badge/TailwindCSS-3-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind" />
   <img src="https://img.shields.io/github/license/kelsonbrito50/hireme-ai" alt="License" />
@@ -22,11 +22,11 @@
 
 ## ✨ Features
 
-- **🔍 Job Analysis** — Paste any job description and instantly extract required skills, get a match score (0–100), and a role summary powered by GPT-4
+- **🔍 Job Analysis** — Paste any job description and instantly extract required skills, get a match score (0–100), and a role summary powered by GPT-4o-mini
 - **📝 Cover Letter Generation** — One-click tailored cover letters that reference the specific role and company
 - **📊 Dashboard** — Track all your applications with stats cards (total apps, avg match score, interviews scheduled)
 - **🎨 Dark Theme** — Beautiful, modern UI built with TailwindCSS on a `#0f172a` dark palette
-- **🔐 Auth** — GitHub OAuth via NextAuth.js with Prisma adapter
+- **🔐 Auth** — GitHub OAuth via NextAuth.js with JWT sessions
 - **🐳 Docker Ready** — One command to spin up the full stack
 
 ---
@@ -45,7 +45,7 @@
 |-------|-----------|
 | Framework | Next.js 14 (App Router) |
 | Language | TypeScript 5 (strict mode) |
-| AI | OpenAI GPT-4 |
+| AI | OpenAI GPT-4o-mini |
 | Database | PostgreSQL + Prisma ORM |
 | Auth | NextAuth.js v4 |
 | Styling | TailwindCSS 3 |

@@ -42,7 +42,7 @@ const features = [
 
 const stats = [
   { value: "0.3s", label: "Average analysis time" },
-  { value: "GPT-4", label: "Powered by OpenAI" },
+  { value: "GPT-4o", label: "Powered by OpenAI" },
   { value: "100%", label: "Free to use" },
 ];
 
@@ -90,7 +90,7 @@ export default function LandingPage() {
         <div className="mx-auto max-w-4xl text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-teal-800 bg-teal-950 px-4 py-1.5 text-sm font-medium text-teal-400">
             <Sparkles className="h-3.5 w-3.5" />
-            Powered by GPT-4
+            Powered by OpenAI
           </div>
 
           <h1 className="mb-6 text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl">
