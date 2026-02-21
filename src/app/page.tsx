@@ -135,7 +135,7 @@ export default function LandingPage() {
         <p>
           Built with Next.js, Prisma, and OpenAI · MIT License ·{" "}
           <a
-            href="https://github.com/yourusername/hireme-ai"
+            href="https://github.com/kelsonbrito50/hireme-ai"
             className="underline hover:text-gray-700"
           >
             View Source
