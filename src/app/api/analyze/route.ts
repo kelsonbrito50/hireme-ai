@@ -27,9 +27,10 @@ export async function POST(req: NextRequest) {
       summary: result.summary,
     });
   } catch (error) {
-    console.error("[analyze] Error:", error);
+    const msg = error instanceof Error ? error.message : String(error);
+    console.error("[analyze] Error:", msg);
     return NextResponse.json(
-      { error: "Failed to analyze job description" },
+      { error: msg },
       { status: 500 }
     );
   }
