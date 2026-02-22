@@ -104,7 +104,8 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
           jobTitle,
           company,
           jobDescription,
-          userSkills: result.skills,
+          userSkills: USER_SKILLS,
+          userName: "Kelson Brito",
         }),
       });
       if (res.ok) {
