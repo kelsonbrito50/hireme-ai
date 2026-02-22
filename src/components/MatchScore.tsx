@@ -14,7 +14,7 @@ export function MatchScore({ score, size = 56 }: MatchScoreProps) {
     score > 70
       ? "stroke-emerald-400"
       : score > 40
-        ? "stroke-amber-400"
+        ? "stroke-brand-400"
         : "stroke-red-400";
 
   return (

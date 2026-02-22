@@ -132,14 +132,14 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
             value={jobTitle}
             onChange={(e) => setJobTitle(e.target.value)}
             placeholder={t.jobTitlePlaceholder}
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-amber-500"
+            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-brand-500"
           />
           <input
             type="text"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
             placeholder={t.companyPlaceholder}
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-amber-500"
+            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-brand-500"
           />
         </div>
 
@@ -149,7 +149,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
           value={skillsInput}
           onChange={(e) => setSkillsInput(e.target.value)}
           placeholder={t.skillsPlaceholder}
-          className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-amber-500"
+          className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-brand-500"
         />
 
         {/* Job description */}
@@ -159,19 +159,19 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
             onChange={(e) => setJobDescription(e.target.value)}
             placeholder={t.descriptionPlaceholder}
             rows={6}
-            className={`w-full resize-none rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-amber-500 ${
-              descTooShort ? "border-amber-500/50" : "border-white/10"
+            className={`w-full resize-none rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-brand-500 ${
+              descTooShort ? "border-brand-500/50" : "border-white/10"
             }`}
           />
           <div className="mt-1 flex justify-between text-xs">
             {descTooShort ? (
-              <span className="text-amber-400">{t.descTooShort}</span>
+              <span className="text-brand-400">{t.descTooShort}</span>
             ) : descLength >= MIN_DESC_LENGTH ? (
-              <span className="text-amber-400">{t.descGood}</span>
+              <span className="text-brand-400">{t.descGood}</span>
             ) : (
               <span className="text-slate-500">{t.descHint}</span>
             )}
-            <span className={descTooShort ? "text-amber-400" : "text-slate-500"}>
+            <span className={descTooShort ? "text-brand-400" : "text-slate-500"}>
               {descLength}/{MIN_DESC_LENGTH} {t.minChars}
             </span>
           </div>
@@ -180,7 +180,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
         <button
           type="submit"
           disabled={loading || descLength < MIN_DESC_LENGTH}
-          className="inline-flex items-center gap-2 rounded-xl bg-amber-500 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-amber-400 disabled:opacity-50"
+          className="inline-flex items-center gap-2 rounded-xl bg-brand-500 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-brand-400 disabled:opacity-50"
         >
           {loading ? (
             <Loader2 className="h-4 w-4 animate-spin" />
@@ -203,7 +203,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
           {/* Score */}
           <div className="flex items-center gap-4">
             <div className="text-center">
-              <p className="text-4xl font-bold text-amber-400">{result.matchScore}%</p>
+              <p className="text-4xl font-bold text-brand-400">{result.matchScore}%</p>
               <p className="text-xs text-slate-500">{t.matchScore}</p>
             </div>
             <p className="flex-1 text-sm text-slate-300">{result.summary}</p>
@@ -214,7 +214,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
             {result.skills.map((skill) => (
               <span
                 key={skill}
-                className="rounded-full bg-amber-500/20 px-3 py-1 text-xs text-amber-300"
+                className="rounded-full bg-brand-500/20 px-3 py-1 text-xs text-brand-300"
               >
                 {skill}
               </span>
@@ -235,7 +235,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
             <button
               onClick={handleCoverLetter}
               disabled={generating || !jobTitle.trim() || !company.trim()}
-              className="inline-flex items-center gap-2 rounded-xl bg-amber-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-amber-400 disabled:opacity-50"
+              className="inline-flex items-center gap-2 rounded-xl bg-brand-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-brand-400 disabled:opacity-50"
             >
               {generating ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
@@ -247,7 +247,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
           </div>
 
           {(!jobTitle.trim() || !company.trim()) && (
-            <p className="text-xs text-amber-400">
+            <p className="text-xs text-brand-400">
               {t.fillTitleCompany}
             </p>
           )}

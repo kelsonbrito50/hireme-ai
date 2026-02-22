@@ -6,9 +6,9 @@ import { useLang } from "@/lib/LanguageContext";
 
 const stepIcons = [ClipboardCopy, Sparkles, Save, FileText];
 const stepColors = [
-  { color: "text-amber-400", bg: "bg-amber-400/10" },
-  { color: "text-amber-400", bg: "bg-amber-400/10" },
-  { color: "text-yellow-400", bg: "bg-yellow-400/10" },
+  { color: "text-brand-400", bg: "bg-brand-400/10" },
+  { color: "text-brand-400", bg: "bg-brand-400/10" },
+  { color: "text-brand-400", bg: "bg-brand-400/10" },
   { color: "text-orange-400", bg: "bg-orange-400/10" },
 ];
 
@@ -31,7 +31,7 @@ export function HowItWorks() {
       >
         <div className="flex items-center gap-2">
           <span className="text-base font-semibold text-white">📖 {t.howItWorksTitle}</span>
-          <span className="rounded-full bg-amber-500/20 px-2 py-0.5 text-xs text-amber-400">4 steps</span>
+          <span className="rounded-full bg-brand-500/20 px-2 py-0.5 text-xs text-brand-400">4 steps</span>
         </div>
         {open
           ? <ChevronUp className="h-4 w-4 text-slate-400" />

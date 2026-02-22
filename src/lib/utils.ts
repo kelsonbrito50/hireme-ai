@@ -20,7 +20,7 @@ export function getStatusColor(status: string): string {
   const colors: Record<string, string> = {
     SAVED: "bg-slate-500/20 text-slate-300",
     APPLIED: "bg-blue-500/20 text-blue-300",
-    INTERVIEWING: "bg-amber-500/20 text-amber-300",
+    INTERVIEWING: "bg-brand-500/20 text-brand-300",
     OFFERED: "bg-emerald-500/20 text-emerald-300",
     REJECTED: "bg-red-500/20 text-red-400",
     WITHDRAWN: "bg-purple-500/20 text-purple-300",

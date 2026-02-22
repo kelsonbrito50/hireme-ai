@@ -130,22 +130,22 @@ export default function DashboardPage() {
       label: t.totalApplications,
       value: totalApps,
       icon: Briefcase,
-      color: "text-amber-400",
-      bg: "bg-amber-400/10",
+      color: "text-brand-400",
+      bg: "bg-brand-400/10",
     },
     {
       label: t.avgMatchScore,
       value: `${avgScore}%`,
       icon: TrendingUp,
-      color: "text-yellow-400",
-      bg: "bg-yellow-400/10",
+      color: "text-brand-400",
+      bg: "bg-brand-400/10",
     },
     {
       label: t.interviews,
       value: interviews,
       icon: Calendar,
-      color: "text-amber-400",
-      bg: "bg-amber-400/10",
+      color: "text-brand-400",
+      bg: "bg-brand-400/10",
     },
   ];
 
@@ -158,7 +158,7 @@ export default function DashboardPage() {
           <div className="flex items-center gap-2">
             <Image src="/logo.png" alt="HireMe" width={56} height={56} className="object-contain" />
             <Image src="/1.png" alt="HireMe AI" width={120} height={40} className="object-contain" />
-            <span className="ml-1 rounded-full bg-amber-500/20 px-2 py-0.5 text-xs font-medium text-amber-400">
+            <span className="ml-1 rounded-full bg-brand-500/20 px-2 py-0.5 text-xs font-medium text-brand-400">
               Beta
             </span>
           </div>
@@ -190,7 +190,7 @@ export default function DashboardPage() {
                       className="rounded-full"
                     />
                   ) : (
-                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-500 text-xs font-bold text-white">
+                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-500 text-xs font-bold text-white">
                       {session.user?.name?.[0] ?? "U"}
                     </div>
                   )}
@@ -207,7 +207,7 @@ export default function DashboardPage() {
                         {session.user?.name}
                       </p>
                       {session.user?.login && (
-                        <p className="text-xs text-amber-400">@{session.user.login}</p>
+                        <p className="text-xs text-brand-400">@{session.user.login}</p>
                       )}
                       <p className="text-xs text-slate-400">{session.user?.email}</p>
                     </div>
@@ -259,7 +259,7 @@ export default function DashboardPage() {
                 alt="GitHub avatar"
                 width={56}
                 height={56}
-                className="rounded-full ring-2 ring-amber-500/30"
+                className="rounded-full ring-2 ring-brand-500/30"
               />
             )}
             <div className="flex-1 min-w-0">
@@ -269,7 +269,7 @@ export default function DashboardPage() {
                   href={session.user.githubUrl ?? "#"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-amber-400 hover:underline flex items-center gap-1"
+                  className="text-xs text-brand-400 hover:underline flex items-center gap-1"
                 >
                   @{session.user.login}
                   <ExternalLink className="h-3 w-3" />
@@ -332,7 +332,7 @@ export default function DashboardPage() {
         {/* Analyze section */}
         <section className="mb-8">
           <div className="mb-4 flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-amber-400" />
+            <Sparkles className="h-5 w-5 text-brand-400" />
             <h2 className="text-lg font-semibold text-white">{t.analyzeSection}</h2>
           </div>
           <AnalyzeForm onApplicationCreated={fetchApplications} />
