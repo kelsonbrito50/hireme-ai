@@ -93,15 +93,15 @@ export default function DashboardPage() {
       label: "Total Applications",
       value: totalApps,
       icon: Briefcase,
-      color: "text-teal-400",
-      bg: "bg-teal-400/10",
+      color: "text-amber-400",
+      bg: "bg-amber-400/10",
     },
     {
       label: "Avg Match Score",
       value: `${avgScore}%`,
       icon: TrendingUp,
-      color: "text-emerald-400",
-      bg: "bg-emerald-400/10",
+      color: "text-yellow-400",
+      bg: "bg-yellow-400/10",
     },
     {
       label: "Interviews",
@@ -113,17 +113,17 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0f172a] text-white">
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
       {/* Navbar */}
-      <nav className="sticky top-0 z-40 border-b border-white/10 bg-[#0f172a]/80 backdrop-blur-md">
+      <nav className="sticky top-0 z-40 border-b border-white/10 bg-[#0a0a0a]/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-500">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500">
               <Target className="h-4 w-4 text-white" />
             </div>
             <span className="text-lg font-bold text-white">HireMe AI</span>
-            <span className="ml-1 rounded-full bg-teal-500/20 px-2 py-0.5 text-xs font-medium text-teal-400">
+            <span className="ml-1 rounded-full bg-amber-500/20 px-2 py-0.5 text-xs font-medium text-amber-400">
               Beta
             </span>
           </div>
@@ -147,7 +147,7 @@ export default function DashboardPage() {
                       className="rounded-full"
                     />
                   ) : (
-                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-teal-500 text-xs font-bold text-white">
+                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-500 text-xs font-bold text-white">
                       {session.user?.name?.[0] ?? "U"}
                     </div>
                   )}
@@ -158,13 +158,13 @@ export default function DashboardPage() {
                 </button>
 
                 {userMenuOpen && (
-                  <div className="absolute right-0 top-full mt-2 w-48 rounded-xl border border-white/10 bg-[#1e293b] py-1 shadow-xl">
+                  <div className="absolute right-0 top-full mt-2 w-48 rounded-xl border border-white/10 bg-[#141414] py-1 shadow-xl">
                     <div className="border-b border-white/10 px-4 py-2">
                       <p className="text-sm font-medium text-white">
                         {session.user?.name}
                       </p>
                       {session.user?.login && (
-                        <p className="text-xs text-teal-400">@{session.user.login}</p>
+                        <p className="text-xs text-amber-400">@{session.user.login}</p>
                       )}
                       <p className="text-xs text-slate-400">{session.user?.email}</p>
                     </div>
@@ -193,7 +193,7 @@ export default function DashboardPage() {
             ) : (
               <button
                 onClick={() => signIn("github")}
-                className="flex items-center gap-2 rounded-xl bg-teal-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-teal-400"
+                className="flex items-center gap-2 rounded-xl bg-amber-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-amber-400"
               >
                 <Github className="h-4 w-4" />
                 Sign in
@@ -226,7 +226,7 @@ export default function DashboardPage() {
                 alt="GitHub avatar"
                 width={56}
                 height={56}
-                className="rounded-full ring-2 ring-teal-500/30"
+                className="rounded-full ring-2 ring-amber-500/30"
               />
             )}
             <div className="flex-1 min-w-0">
@@ -236,7 +236,7 @@ export default function DashboardPage() {
                   href={session.user.githubUrl ?? "#"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-teal-400 hover:underline flex items-center gap-1"
+                  className="text-xs text-amber-400 hover:underline flex items-center gap-1"
                 >
                   @{session.user.login}
                   <ExternalLink className="h-3 w-3" />
@@ -299,7 +299,7 @@ export default function DashboardPage() {
         {/* Analyze section */}
         <section className="mb-8">
           <div className="mb-4 flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-teal-400" />
+            <Sparkles className="h-5 w-5 text-amber-400" />
             <h2 className="text-lg font-semibold text-white">Analyze a Job</h2>
           </div>
           <AnalyzeForm onApplicationCreated={fetchApplications} />
