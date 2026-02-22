@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import {
@@ -12,43 +12,31 @@ import {
   Github,
   CheckCircle2,
 } from "lucide-react";
-
-const features = [
-  {
-    icon: Target,
-    title: "Smart Skill Matching",
-    description:
-      "AI analyzes job descriptions and calculates how well your skills match — instantly.",
-  },
-  {
-    icon: FileText,
-    title: "Cover Letter Generator",
-    description:
-      "Generate tailored, compelling cover letters that reference specific role requirements.",
-  },
-  {
-    icon: BarChart3,
-    title: "Application Dashboard",
-    description:
-      "Track every application from saved → applied → interviewing → offered in one place.",
-  },
-  {
-    icon: Sparkles,
-    title: "AI-Powered Insights",
-    description:
-      "Get actionable suggestions on skills to learn and how to strengthen your profile.",
-  },
-];
-
-const stats = [
-  { value: "0.3s", label: "Average analysis time" },
-  { value: "GPT-4o", label: "Powered by OpenAI" },
-  { value: "100%", label: "Free to use" },
-];
+import { useLang } from "@/lib/LanguageContext";
 
 export default function LandingPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const { lang, t, toggle: toggleLang } = useLang();
+
+  const features = [
+    { icon: Target, title: t.feat1Title, description: t.feat1Desc },
+    { icon: FileText, title: t.feat2Title, description: t.feat2Desc },
+    { icon: BarChart3, title: t.feat3Title, description: t.feat3Desc },
+    { icon: Sparkles, title: t.feat4Title, description: t.feat4Desc },
+  ];
+
+  const stats = [
+    { value: "0.3s", label: t.statTime },
+    { value: "GPT-4o", label: t.statPowered },
+    { value: "100%", label: t.statFree },
+  ];
+
+  const steps = [
+    { step: "01", title: t.step1Title, desc: t.step1Desc },
+    { step: "02", title: t.step2Title, desc: t.step2Desc },
+    { step: "03", title: t.step3Title, desc: t.step3Desc },
+  ];
 
   useEffect(() => {
     if (session) {
@@ -75,13 +63,21 @@ export default function LandingPage() {
             </div>
             <span className="text-lg font-bold text-white">HireMe AI</span>
           </div>
-          <button
-            onClick={() => router.push("/dashboard")}
-            className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-[#1a1a1a] px-4 py-2 text-sm font-medium text-[#f5f0eb] transition hover:border-white/20 hover:bg-[#242424]"
-          >
-            <Github className="h-4 w-4" />
-            Sign in
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={toggleLang}
+              className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-[#1a1a1a] px-3 py-2 text-xs font-semibold text-[#f5f0eb] transition hover:border-white/20 hover:bg-[#242424]"
+            >
+              {lang === "en" ? "🇧🇷 PT" : "🇺🇸 EN"}
+            </button>
+            <button
+              onClick={() => router.push("/dashboard")}
+              className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-[#1a1a1a] px-4 py-2 text-sm font-medium text-[#f5f0eb] transition hover:border-white/20 hover:bg-[#242424]"
+            >
+              <Github className="h-4 w-4" />
+              {t.signIn}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -90,18 +86,17 @@ export default function LandingPage() {
         <div className="mx-auto max-w-4xl text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-800 bg-amber-950 px-4 py-1.5 text-sm font-medium text-amber-400">
             <Sparkles className="h-3.5 w-3.5" />
-            Powered by OpenAI
+            {t.heroTagline}
           </div>
 
           <h1 className="mb-6 text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl">
-            Stop Guessing.
+            {t.heroTitle1}
             <br />
-            <span className="text-amber-400">Start Getting Hired.</span>
+            <span className="text-amber-400">{t.heroTitle2}</span>
           </h1>
 
           <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-[#888]">
-            HireMe AI analyzes job descriptions against your skills, gives you
-            a real match score, and writes tailored cover letters in seconds.
+            {t.heroDesc}
           </p>
 
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -110,13 +105,13 @@ export default function LandingPage() {
               className="inline-flex items-center gap-2 rounded-xl bg-amber-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-amber-900/40 transition hover:bg-amber-400"
             >
               <Github className="h-5 w-5" />
-              Get Started Free
+              {t.getStartedFree}
             </button>
             <button
               onClick={() => router.push("/dashboard")}
               className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-[#1a1a1a] px-8 py-3.5 text-base font-semibold text-[#f5f0eb] transition hover:border-white/20 hover:bg-[#242424]"
             >
-              See Demo
+              {t.seeDemo}
               <ArrowRight className="h-4 w-4" />
             </button>
           </div>
@@ -138,10 +133,10 @@ export default function LandingPage() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-16 text-center">
             <h2 className="mb-4 text-3xl font-bold text-[#f5f0eb]">
-              Everything your job search needs
+              {t.featuresTitle}
             </h2>
             <p className="text-[#888]">
-              Stop juggling spreadsheets. Let AI do the heavy lifting.
+              {t.featuresSub}
             </p>
           </div>
 
@@ -170,14 +165,10 @@ export default function LandingPage() {
       <section className="px-6 py-24">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="mb-12 text-3xl font-bold text-[#f5f0eb]">
-            Up and running in 60 seconds
+            {t.howTitle}
           </h2>
           <div className="space-y-6 text-left">
-            {[
-              { step: "01", title: "Sign in with GitHub", desc: "One click. No forms. No credit card." },
-              { step: "02", title: "Paste a job description", desc: "Copy from LinkedIn, Indeed, or any job board." },
-              { step: "03", title: "Get your match score + cover letter", desc: "AI returns a 0–100 match score, extracted skills, and a tailored cover letter." },
-            ].map((item) => (
+            {steps.map((item) => (
               <div key={item.step} className="flex items-start gap-5 rounded-2xl border border-white/10 bg-[#111111] p-6">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-500 text-sm font-bold text-white">
                   {item.step}
@@ -201,17 +192,17 @@ export default function LandingPage() {
             ))}
           </div>
           <h2 className="mb-4 text-3xl font-bold text-white">
-            Ready to land your next role?
+            {t.ctaTitle}
           </h2>
           <p className="mb-8 text-[#888]">
-            Join developers using HireMe AI to apply smarter, not harder.
+            {t.ctaSub}
           </p>
           <button
             onClick={() => router.push("/dashboard")}
             className="inline-flex items-center gap-2 rounded-xl bg-amber-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-amber-900/40 transition hover:bg-amber-400"
           >
             <Github className="h-5 w-5" />
-            Get Started Free
+            {t.getStartedFree}
           </button>
         </div>
       </section>
@@ -219,12 +210,12 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="border-t border-white/10 bg-[#0a0a0a] py-8 text-center text-sm text-[#888]">
         <p>
-          Built with Next.js · Prisma · OpenAI · Neon · MIT License ·{" "}
+          {t.footerText}{" "}
           <a
             href="https://github.com/kelsonbrito50/hireme-ai"
             className="text-amber-500 transition hover:text-amber-400"
           >
-            View Source
+            {t.viewSource}
           </a>
         </p>
       </footer>

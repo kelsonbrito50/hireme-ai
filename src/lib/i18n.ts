@@ -72,6 +72,52 @@ export const translations = {
     exportCsv: "Export CSV",
     noApplications: "No applications yet.",
     noApplicationsSub: "Analyze a job description above to get started.",
+
+    // Landing nav
+    getStartedFree: "Get Started Free",
+    seeDemo: "See Demo",
+
+    // Hero
+    heroTagline: "Powered by OpenAI",
+    heroTitle1: "Stop Guessing.",
+    heroTitle2: "Start Getting Hired.",
+    heroDesc: "HireMe AI analyzes job descriptions against your skills, gives you a real match score, and writes tailored cover letters in seconds.",
+
+    // Stats
+    statTime: "Average analysis time",
+    statPowered: "Powered by OpenAI",
+    statFree: "Free to use",
+
+    // Features section
+    featuresTitle: "Everything your job search needs",
+    featuresSub: "Stop juggling spreadsheets. Let AI do the heavy lifting.",
+
+    // Feature cards
+    feat1Title: "Smart Skill Matching",
+    feat1Desc: "AI analyzes job descriptions and calculates how well your skills match — instantly.",
+    feat2Title: "Cover Letter Generator",
+    feat2Desc: "Generate tailored, compelling cover letters that reference specific role requirements.",
+    feat3Title: "Application Dashboard",
+    feat3Desc: "Track every application from saved → applied → interviewing → offered in one place.",
+    feat4Title: "AI-Powered Insights",
+    feat4Desc: "Get actionable suggestions on skills to learn and how to strengthen your profile.",
+
+    // How it works (landing)
+    howTitle: "Up and running in 60 seconds",
+    step1Title: "Sign in with GitHub",
+    step1Desc: "One click. No forms. No credit card.",
+    step2Title: "Paste a job description",
+    step2Desc: "Copy from LinkedIn, Indeed, or any job board.",
+    step3Title: "Get your match score + cover letter",
+    step3Desc: "AI returns a 0–100 match score, extracted skills, and a tailored cover letter.",
+
+    // CTA
+    ctaTitle: "Ready to land your next role?",
+    ctaSub: "Join developers using HireMe AI to apply smarter, not harder.",
+
+    // Footer
+    footerText: "Built with Next.js · Prisma · OpenAI · Neon · MIT License ·",
+    viewSource: "View Source",
   },
 
   pt: {
@@ -145,6 +191,52 @@ export const translations = {
     exportCsv: "Exportar CSV",
     noApplications: "Nenhuma candidatura ainda.",
     noApplicationsSub: "Analise uma vaga acima para começar.",
+
+    // Landing nav
+    getStartedFree: "Começar Grátis",
+    seeDemo: "Ver Demo",
+
+    // Hero
+    heroTagline: "Desenvolvido com OpenAI",
+    heroTitle1: "Chega de Adivinhar.",
+    heroTitle2: "Comece a Ser Contratado.",
+    heroDesc: "O HireMe AI analisa vagas com base nas suas habilidades, gera um score real de compatibilidade e escreve cartas de apresentação personalizadas em segundos.",
+
+    // Stats
+    statTime: "Tempo médio de análise",
+    statPowered: "Desenvolvido com OpenAI",
+    statFree: "Gratuito",
+
+    // Features section
+    featuresTitle: "Tudo que sua busca de emprego precisa",
+    featuresSub: "Pare de controlar tudo em planilhas. Deixe a IA fazer o trabalho pesado.",
+
+    // Feature cards
+    feat1Title: "Match Inteligente de Habilidades",
+    feat1Desc: "A IA analisa as descrições de vagas e calcula em tempo real o quanto suas habilidades se encaixam.",
+    feat2Title: "Gerador de Carta de Apresentação",
+    feat2Desc: "Gere cartas persuasivas e personalizadas que mencionam requisitos específicos da vaga.",
+    feat3Title: "Painel de Candidaturas",
+    feat3Desc: "Acompanhe cada candidatura de salva → enviada → entrevista → oferta em um só lugar.",
+    feat4Title: "Insights com IA",
+    feat4Desc: "Receba sugestões práticas de habilidades a desenvolver e como fortalecer seu perfil.",
+
+    // How it works (landing)
+    howTitle: "Funcionando em 60 segundos",
+    step1Title: "Entre com o GitHub",
+    step1Desc: "Um clique. Sem formulários. Sem cartão de crédito.",
+    step2Title: "Cole uma descrição de vaga",
+    step2Desc: "Copie do LinkedIn, Indeed ou qualquer site de vagas.",
+    step3Title: "Receba seu score + carta de apresentação",
+    step3Desc: "A IA retorna um score de 0 a 100, habilidades extraídas e uma carta personalizada.",
+
+    // CTA
+    ctaTitle: "Pronto para conseguir sua próxima vaga?",
+    ctaSub: "Junte-se a desenvolvedores que usam o HireMe AI para candidatar-se com mais inteligência.",
+
+    // Footer
+    footerText: "Desenvolvido com Next.js · Prisma · OpenAI · Neon · Licença MIT ·",
+    viewSource: "Ver Código",
   },
 } as const;
 
