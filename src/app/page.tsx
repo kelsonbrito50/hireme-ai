@@ -59,7 +59,7 @@ export default function LandingPage() {
       <nav className="border-b border-white/10 bg-[#0a0a0a] px-6 py-4">
         <div className="mx-auto flex max-w-6xl items-center justify-between">
           <div className="flex items-center gap-2">
-            <Image src="/logo.jpg" alt="HireMe" width={32} height={32} className="rounded-lg object-cover" />
+            <Image src="/logo.png" alt="HireMe" width={32} height={32} className="rounded-lg object-cover" />
             <span className="text-lg font-bold text-white">HireMe AI</span>
           </div>
           <div className="flex items-center gap-2">
