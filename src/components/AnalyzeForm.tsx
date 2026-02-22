@@ -13,6 +13,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
   const [jobTitle, setJobTitle] = useState("");
   const [company, setCompany] = useState("");
   const [jobDescription, setJobDescription] = useState("");
+  const [skillsInput, setSkillsInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [generating, setGenerating] = useState(false);
@@ -27,13 +28,11 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
 
   const { t } = useLang();
 
-  // Candidate skills used for match score calculation
-  const USER_SKILLS = [
-    "Python", "Django", "Django REST Framework", "React", "JavaScript",
-    "TypeScript", "PostgreSQL", "Docker", "GitHub Actions", "AWS S3",
-    "Redis", "Celery", "JWT", "TailwindCSS", "HTML5", "CSS3", "Git",
-    "Next.js", "Node.js", "REST API", "CI/CD", "OWASP", "Pytest",
-  ];
+  const parseSkills = () =>
+    skillsInput
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
 
   const MIN_DESC_LENGTH = 100;
   const descLength = jobDescription.trim().length;
@@ -52,7 +51,10 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
       const res = await fetch("/api/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ jobDescription, userSkills: USER_SKILLS }),
+        body: JSON.stringify({
+          jobDescription,
+          userSkills: parseSkills(),
+        }),
       });
 
       const data = await res.json();
@@ -82,7 +84,6 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
           description: jobDescription,
           matchScore: result.matchScore,
           skills: result.skills,
-          userId: "guest",
         }),
       });
       if (res.ok) {
@@ -107,8 +108,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
           jobTitle,
           company,
           jobDescription,
-          userSkills: USER_SKILLS,
-          userName: "Kelson Brito",
+          userSkills: parseSkills(),
         }),
       });
       if (res.ok) {
@@ -142,6 +142,15 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
             className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-amber-500"
           />
         </div>
+
+        {/* Skills input */}
+        <input
+          type="text"
+          value={skillsInput}
+          onChange={(e) => setSkillsInput(e.target.value)}
+          placeholder={t.skillsPlaceholder}
+          className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-amber-500"
+        />
 
         {/* Job description */}
         <div>
@@ -184,7 +193,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
 
       {error && (
         <div className="mt-4 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
-          ❌ {error}
+          {error}
         </div>
       )}
 
@@ -239,7 +248,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
 
           {(!jobTitle.trim() || !company.trim()) && (
             <p className="text-xs text-amber-400">
-              ⚠️ Fill in job title and company above to save or generate a cover letter.
+              {t.fillTitleCompany}
             </p>
           )}
         </div>

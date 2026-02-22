@@ -64,7 +64,8 @@ export const translations = {
     saved: "Saved ✓",
     generateCoverLetter: "Generate Cover Letter",
     generating: "Generating…",
-    fillTitleCompany: "⚠️ Fill in job title and company above to save or generate a cover letter.",
+    fillTitleCompany: "Fill in job title and company above to save or generate a cover letter.",
+    skillsPlaceholder: "Your skills (comma-separated, e.g. React, TypeScript, Node.js)",
 
     // Applications section
     analyzeSection: "Analyze a Job",
@@ -183,7 +184,8 @@ export const translations = {
     saved: "Salvo ✓",
     generateCoverLetter: "Gerar Carta de Apresentação",
     generating: "Gerando…",
-    fillTitleCompany: "⚠️ Preencha o título e a empresa acima para salvar ou gerar uma carta.",
+    fillTitleCompany: "Preencha o titulo e a empresa acima para salvar ou gerar uma carta.",
+    skillsPlaceholder: "Suas habilidades (separadas por virgula, ex: React, TypeScript, Node.js)",
 
     // Applications section
     analyzeSection: "Analisar uma Vaga",
