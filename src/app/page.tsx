@@ -12,6 +12,7 @@ import {
   Github,
   CheckCircle2,
 } from "lucide-react";
+import Image from "next/image";
 import { useLang } from "@/lib/LanguageContext";
 
 export default function LandingPage() {
@@ -58,9 +59,7 @@ export default function LandingPage() {
       <nav className="border-b border-white/10 bg-[#0a0a0a] px-6 py-4">
         <div className="mx-auto flex max-w-6xl items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500">
-              <Target className="h-4 w-4 text-white" />
-            </div>
+            <Image src="/logo.jpg" alt="HireMe" width={32} height={32} className="rounded-lg object-cover" />
             <span className="text-lg font-bold text-white">HireMe AI</span>
           </div>
           <div className="flex items-center gap-2">
