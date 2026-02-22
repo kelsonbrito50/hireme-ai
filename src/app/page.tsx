@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import {
@@ -70,7 +70,7 @@ export default function LandingPage() {
               {lang === "en" ? "🇧🇷 PT" : "🇺🇸 EN"}
             </button>
             <button
-              onClick={() => router.push("/dashboard")}
+              onClick={() => signIn("github")}
               className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-[#1a1a1a] px-4 py-2 text-sm font-medium text-[#f5f0eb] transition hover:border-white/20 hover:bg-[#242424]"
             >
               <Github className="h-4 w-4" />
@@ -100,14 +100,14 @@ export default function LandingPage() {
 
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <button
-              onClick={() => router.push("/dashboard")}
+              onClick={() => signIn("github")}
               className="inline-flex items-center gap-2 rounded-xl bg-amber-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-amber-900/40 transition hover:bg-amber-400"
             >
               <Github className="h-5 w-5" />
               {t.getStartedFree}
             </button>
             <button
-              onClick={() => router.push("/dashboard")}
+              onClick={() => signIn("github")}
               className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-[#1a1a1a] px-8 py-3.5 text-base font-semibold text-[#f5f0eb] transition hover:border-white/20 hover:bg-[#242424]"
             >
               {t.seeDemo}
@@ -197,7 +197,7 @@ export default function LandingPage() {
             {t.ctaSub}
           </p>
           <button
-            onClick={() => router.push("/dashboard")}
+            onClick={() => signIn("github")}
             className="inline-flex items-center gap-2 rounded-xl bg-amber-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-amber-900/40 transition hover:bg-amber-400"
           >
             <Github className="h-5 w-5" />
