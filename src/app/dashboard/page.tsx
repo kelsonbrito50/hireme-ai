@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { JobCard } from "@/components/JobCard";
 import { AnalyzeForm } from "@/components/AnalyzeForm";
+import { HowItWorks } from "@/components/HowItWorks";
 import {
   Briefcase,
   TrendingUp,
@@ -291,6 +292,9 @@ export default function DashboardPage() {
             </div>
           ))}
         </div>
+
+        {/* How it works guide */}
+        <HowItWorks />
 
         {/* Analyze section */}
         <section className="mb-8">
