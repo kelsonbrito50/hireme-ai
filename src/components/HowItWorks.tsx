@@ -6,8 +6,8 @@ import { ChevronDown, ChevronUp, ClipboardCopy, Sparkles, Save, FileText } from 
 const steps = [
   {
     icon: ClipboardCopy,
-    color: "text-blue-400",
-    bg: "bg-blue-400/10",
+    color: "text-amber-400",
+    bg: "bg-amber-400/10",
     number: "1",
     title: "Find a job on LinkedIn or Indeed",
     desc: 'Open any job posting, select all the description text and copy it (Ctrl+A, Ctrl+C). The more text, the better the analysis.',
@@ -15,8 +15,8 @@ const steps = [
   },
   {
     icon: Sparkles,
-    color: "text-teal-400",
-    bg: "bg-teal-400/10",
+    color: "text-amber-400",
+    bg: "bg-amber-400/10",
     number: "2",
     title: 'Fill in the form and click "Analyze Job"',
     desc: 'Enter the job title, company name, and paste the full description. Click Analyze Job and wait ~5 seconds for the AI.',
@@ -24,8 +24,8 @@ const steps = [
   },
   {
     icon: Save,
-    color: "text-emerald-400",
-    bg: "bg-emerald-400/10",
+    color: "text-yellow-400",
+    bg: "bg-yellow-400/10",
     number: "3",
     title: "Read your match score and save",
     desc: "The AI returns a score from 0–100 showing how well your skills match the job, plus the required skills. Click Save Application to track it.",
@@ -33,8 +33,8 @@ const steps = [
   },
   {
     icon: FileText,
-    color: "text-purple-400",
-    bg: "bg-purple-400/10",
+    color: "text-orange-400",
+    bg: "bg-orange-400/10",
     number: "4",
     title: "Generate a tailored cover letter",
     desc: "Click Generate Cover Letter for an AI-written cover letter personalized to that specific job and company. Ready to copy and send.",
@@ -54,7 +54,7 @@ export function HowItWorks() {
       >
         <div className="flex items-center gap-2">
           <span className="text-base font-semibold text-white">📖 How to use HireMe AI</span>
-          <span className="rounded-full bg-teal-500/20 px-2 py-0.5 text-xs text-teal-400">4 steps</span>
+          <span className="rounded-full bg-amber-500/20 px-2 py-0.5 text-xs text-amber-400">4 steps</span>
         </div>
         {open
           ? <ChevronUp className="h-4 w-4 text-slate-400" />
