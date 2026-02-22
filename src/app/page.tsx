@@ -48,7 +48,7 @@ export default function LandingPage() {
   if (status === "loading") {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#0a0a0a]">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-amber-500 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-500 border-t-transparent" />
       </div>
     );
   }
@@ -83,7 +83,7 @@ export default function LandingPage() {
       {/* Hero — dark navy */}
       <header className="bg-[#0a0a0a] px-6 pb-24 pt-20">
         <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-800 bg-amber-950 px-4 py-1.5 text-sm font-medium text-amber-400">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-800 bg-brand-950 px-4 py-1.5 text-sm font-medium text-brand-400">
             <Sparkles className="h-3.5 w-3.5" />
             {t.heroTagline}
           </div>
@@ -91,7 +91,7 @@ export default function LandingPage() {
           <h1 className="mb-6 text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl">
             {t.heroTitle1}
             <br />
-            <span className="text-amber-400">{t.heroTitle2}</span>
+            <span className="text-brand-400">{t.heroTitle2}</span>
           </h1>
 
           <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-[#888]">
@@ -101,7 +101,7 @@ export default function LandingPage() {
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <button
               onClick={() => signIn("github")}
-              className="inline-flex items-center gap-2 rounded-xl bg-amber-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-amber-900/40 transition hover:bg-amber-400"
+              className="inline-flex items-center gap-2 rounded-xl bg-brand-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-brand-900/40 transition hover:bg-brand-400"
             >
               <Github className="h-5 w-5" />
               {t.getStartedFree}
@@ -145,8 +145,8 @@ export default function LandingPage() {
                 key={feature.title}
                 className="rounded-2xl border border-white/10 bg-[#1a1a1a] p-6 shadow-none transition hover:shadow-md"
               >
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-amber-50">
-                  <feature.icon className="h-5 w-5 text-amber-600" />
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50">
+                  <feature.icon className="h-5 w-5 text-brand-600" />
                 </div>
                 <h3 className="mb-2 text-base font-semibold text-[#f5f0eb]">
                   {feature.title}
@@ -169,7 +169,7 @@ export default function LandingPage() {
           <div className="space-y-6 text-left">
             {steps.map((item) => (
               <div key={item.step} className="flex items-start gap-5 rounded-2xl border border-white/10 bg-[#111111] p-6">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-500 text-sm font-bold text-white">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-500 text-sm font-bold text-white">
                   {item.step}
                 </span>
                 <div>
@@ -187,7 +187,7 @@ export default function LandingPage() {
         <div className="mx-auto max-w-2xl">
           <div className="mb-4 flex justify-center gap-1">
             {[...Array(5)].map((_, i) => (
-              <CheckCircle2 key={i} className="h-5 w-5 text-amber-400" />
+              <CheckCircle2 key={i} className="h-5 w-5 text-brand-400" />
             ))}
           </div>
           <h2 className="mb-4 text-3xl font-bold text-white">
@@ -198,7 +198,7 @@ export default function LandingPage() {
           </p>
           <button
             onClick={() => signIn("github")}
-            className="inline-flex items-center gap-2 rounded-xl bg-amber-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-amber-900/40 transition hover:bg-amber-400"
+            className="inline-flex items-center gap-2 rounded-xl bg-brand-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-brand-900/40 transition hover:bg-brand-400"
           >
             <Github className="h-5 w-5" />
             {t.getStartedFree}
@@ -212,7 +212,7 @@ export default function LandingPage() {
           {t.footerText}{" "}
           <a
             href="https://github.com/kelsonbrito50/hireme-ai"
-            className="text-amber-500 transition hover:text-amber-400"
+            className="text-brand-500 transition hover:text-brand-400"
           >
             {t.viewSource}
           </a>
