@@ -88,6 +88,21 @@
   <img src="docs/landing.png" alt="HireMe AI Landing Page" width="800" />
 </p>
 
+### Dashboard
+<p align="center">
+  <img src="docs/dashboard.png" alt="HireMe AI Dashboard" width="800" />
+</p>
+
+### Cover Letter Generation
+<p align="center">
+  <img src="docs/cover-letter.png" alt="HireMe AI Cover Letter" width="500" />
+</p>
+
+### Application Tracking
+<p align="center">
+  <img src="docs/applications.png" alt="HireMe AI Applications" width="500" />
+</p>
+
 ---
 
 ## 🏗 Tech Stack
