@@ -10,7 +10,6 @@ import {
   Briefcase,
   TrendingUp,
   Calendar,
-  Target,
   Github,
   LogOut,
   ChevronDown,
@@ -121,9 +120,7 @@ export default function DashboardPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500">
-              <Target className="h-4 w-4 text-white" />
-            </div>
+            <Image src="/logo.jpg" alt="HireMe" width={32} height={32} className="rounded-lg object-cover" />
             <span className="text-lg font-bold text-white">HireMe AI</span>
             <span className="ml-1 rounded-full bg-amber-500/20 px-2 py-0.5 text-xs font-medium text-amber-400">
               Beta
