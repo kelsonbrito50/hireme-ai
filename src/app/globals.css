@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 5%;          /* #0d0d0d — Claude dark */
+    --background: 0 0% 5%;          /* #0d0d0d — charcoal dark */
     --foreground: 38 15% 95%;        /* warm off-white */
     --card: 0 0% 10%;                /* #1a1a1a */
     --card-foreground: 38 15% 95%;
