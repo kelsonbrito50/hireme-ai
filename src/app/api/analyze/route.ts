@@ -1,20 +1,33 @@
 import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 import { analyzeJobDescription } from "@/lib/openai";
+import { getAuthenticatedSession } from "@/lib/auth-utils";
+import { rateLimit } from "@/lib/rate-limit";
+
+const analyzeSchema = z.object({
+  jobDescription: z.string().min(1).max(50_000),
+  userSkills: z.array(z.string().max(100)).max(100).optional(),
+});
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
-    const { jobDescription, userSkills } = body as {
-      jobDescription?: string;
-      userSkills?: string[];
-    };
+    const { session, error } = await getAuthenticatedSession();
+    if (error) return error;
 
-    if (!jobDescription || typeof jobDescription !== "string") {
+    const rateLimited = rateLimit(req, { windowMs: 60_000, max: 10 });
+    if (rateLimited) return rateLimited;
+
+    const body = await req.json();
+    const parsed = analyzeSchema.safeParse(body);
+
+    if (!parsed.success) {
       return NextResponse.json(
-        { error: "jobDescription is required" },
+        { error: parsed.error.issues[0]?.message ?? "Invalid input" },
         { status: 400 }
       );
     }
+
+    const { jobDescription, userSkills } = parsed.data;
 
     const result = await analyzeJobDescription(
       jobDescription,
@@ -30,7 +43,7 @@ export async function POST(req: NextRequest) {
     const msg = error instanceof Error ? error.message : String(error);
     console.error("[analyze] Error:", msg);
     return NextResponse.json(
-      { error: msg },
+      { error: "Analysis failed. Please try again." },
       { status: 500 }
     );
   }

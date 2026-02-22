@@ -1,5 +1,18 @@
 import { NextRequest } from "next/server";
 
+// Mock auth — all tests run as an authenticated user
+jest.mock("@/lib/auth-utils", () => ({
+  getAuthenticatedSession: jest.fn().mockResolvedValue({
+    session: { user: { id: "test-user-1", name: "Test User" } },
+    error: null,
+  }),
+}));
+
+// Mock rate limiter — always allow
+jest.mock("@/lib/rate-limit", () => ({
+  rateLimit: jest.fn().mockReturnValue(null),
+}));
+
 // Mock OpenAI before importing the route
 jest.mock("@/lib/openai", () => ({
   analyzeJobDescription: jest.fn().mockResolvedValue({
@@ -37,13 +50,22 @@ describe("POST /api/analyze", () => {
   it("returns 400 when jobDescription is missing", async () => {
     const res = await POST(makeRequest({}));
     expect(res.status).toBe(400);
-
-    const data = await res.json();
-    expect(data.error).toBe("jobDescription is required");
   });
 
   it("returns 400 when jobDescription is not a string", async () => {
     const res = await POST(makeRequest({ jobDescription: 123 }));
     expect(res.status).toBe(400);
+  });
+
+  it("returns 401 when unauthenticated", async () => {
+    const { getAuthenticatedSession } = require("@/lib/auth-utils");
+    const { NextResponse } = require("next/server");
+    getAuthenticatedSession.mockResolvedValueOnce({
+      session: null,
+      error: NextResponse.json({ error: "Unauthorized" }, { status: 401 }),
+    });
+
+    const res = await POST(makeRequest({ jobDescription: "We need a React dev" }));
+    expect(res.status).toBe(401);
   });
 });

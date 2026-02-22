@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { JobCard } from "@/components/JobCard";
@@ -32,12 +32,24 @@ interface Application {
   url: string | null;
 }
 
+/** Escape a value for safe CSV embedding. */
+function csvEscape(value: string): string {
+  // Prefix formula-injection characters with a single quote
+  let safe = value;
+  if (/^[=+\-@\t\r]/.test(safe)) {
+    safe = "'" + safe;
+  }
+  // Escape internal quotes and wrap in quotes
+  return `"${safe.replace(/"/g, '""')}"`;
+}
+
 export default function DashboardPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const [applications, setApplications] = useState<Application[]>([]);
   const [loading, setLoading] = useState(true);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
   const { lang, t, toggle: toggleLang } = useLang();
 
   // Redirect unauthenticated users to landing page
@@ -47,7 +59,19 @@ export default function DashboardPage() {
     }
   }, [status, router]);
 
-  const fetchApplications = async () => {
+  // Click-outside handler for user menu
+  useEffect(() => {
+    if (!userMenuOpen) return;
+    function handleClick(e: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setUserMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [userMenuOpen]);
+
+  const fetchApplications = useCallback(async () => {
     try {
       const res = await fetch("/api/applications");
       if (res.ok) {
@@ -59,11 +83,14 @@ export default function DashboardPage() {
     } finally {
       setLoading(false);
     }
-  };
-
-  useEffect(() => {
-    fetchApplications();
   }, []);
+
+  // Only fetch when authenticated
+  useEffect(() => {
+    if (status === "authenticated") {
+      fetchApplications();
+    }
+  }, [status, fetchApplications]);
 
   const totalApps = applications.length;
   const avgScore =
@@ -82,11 +109,11 @@ export default function DashboardPage() {
   const exportToCSV = () => {
     const headers = ["Job Title", "Company", "Status", "Match Score (%)", "Date Applied"];
     const rows = applications.map((a) => [
-      `"${a.title}"`,
-      `"${a.company}"`,
-      a.status,
-      a.matchScore ?? "N/A",
-      new Date(a.createdAt).toLocaleDateString(),
+      csvEscape(a.title),
+      csvEscape(a.company),
+      csvEscape(a.status),
+      a.matchScore != null ? String(a.matchScore) : "N/A",
+      csvEscape(new Date(a.createdAt).toLocaleDateString()),
     ]);
     const csv = [headers.join(","), ...rows.map((r) => r.join(","))].join("\n");
     const blob = new Blob([csv], { type: "text/csv" });
@@ -144,12 +171,12 @@ export default function DashboardPage() {
               className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-300 transition hover:bg-white/10"
               title="Toggle language / Alternar idioma"
             >
-              {lang === "en" ? "🇧🇷 PT" : "🇺🇸 EN"}
+              {lang === "en" ? "PT" : "EN"}
             </button>
             {status === "loading" ? (
               <div className="h-8 w-8 animate-pulse rounded-full bg-white/10" />
             ) : session ? (
-              <div className="relative">
+              <div className="relative" ref={menuRef}>
                 <button
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
                   className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-slate-300 transition hover:bg-white/10"
@@ -201,7 +228,7 @@ export default function DashboardPage() {
                       className="flex w-full items-center gap-2 px-4 py-2 text-sm text-red-400 transition hover:bg-white/5"
                     >
                       <LogOut className="h-4 w-4" />
-                      Sign out
+                      {t.signOut}
                     </button>
                   </div>
                 )}
@@ -252,7 +279,7 @@ export default function DashboardPage() {
                 <p className="mt-0.5 text-sm text-slate-400 truncate">{session.user.bio}</p>
               )}
               {session.user.company && (
-                <p className="text-xs text-slate-500 mt-0.5">🏢 {session.user.company}</p>
+                <p className="text-xs text-slate-500 mt-0.5">{session.user.company}</p>
               )}
             </div>
             <div className="flex gap-5 text-center">
