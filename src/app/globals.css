@@ -4,44 +4,24 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --primary: 174 77% 31%;
+    --background: 0 0% 5%;          /* #0d0d0d — Claude dark */
+    --foreground: 38 15% 95%;        /* warm off-white */
+    --card: 0 0% 10%;                /* #1a1a1a */
+    --card-foreground: 38 15% 95%;
+    --primary: 38 90% 50%;           /* amber orange #d97706 */
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 20% 96%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 210 20% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 174 50% 92%;
-    --accent-foreground: 174 77% 20%;
+    --secondary: 0 0% 14%;           /* dark surface */
+    --secondary-foreground: 38 15% 90%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 38 90% 50%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 174 77% 31%;
+    --border: 0 0% 16%;              /* subtle border */
+    --input: 0 0% 14%;
+    --ring: 38 90% 50%;
     --radius: 0.75rem;
-  }
-
-  .dark {
-    --background: 222 47% 7%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 10%;
-    --card-foreground: 210 40% 98%;
-    --primary: 174 72% 42%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 174 72% 42%;
   }
 }
 
@@ -50,6 +30,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[#0a0a0a] text-[#f5f0eb];
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
