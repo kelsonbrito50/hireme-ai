@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useSession, signOut } from "next-auth/react";
 import { JobCard } from "@/components/JobCard";
 import { AnalyzeForm } from "@/components/AnalyzeForm";
 import { HowItWorks } from "@/components/HowItWorks";
@@ -33,10 +34,18 @@ interface Application {
 
 export default function DashboardPage() {
   const { data: session, status } = useSession();
+  const router = useRouter();
   const [applications, setApplications] = useState<Application[]>([]);
   const [loading, setLoading] = useState(true);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const { lang, t, toggle: toggleLang } = useLang();
+
+  // Redirect unauthenticated users to landing page
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/");
+    }
+  }, [status, router]);
 
   const fetchApplications = async () => {
     try {
@@ -197,15 +206,7 @@ export default function DashboardPage() {
                   </div>
                 )}
               </div>
-            ) : (
-              <button
-                onClick={() => signIn("github")}
-                className="flex items-center gap-2 rounded-xl bg-amber-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-amber-400"
-              >
-                <Github className="h-4 w-4" />
-                Sign in
-              </button>
-            )}
+            ) : null}
           </div>
         </div>
       </nav>
