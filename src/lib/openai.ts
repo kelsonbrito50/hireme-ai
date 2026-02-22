@@ -83,7 +83,13 @@ export async function generateCoverLetter(params: {
         role: "system",
         content: `You are an expert career coach who writes compelling, personalized cover letters.
 Write in a professional but warm tone. Be specific — reference the company and role.
-Keep it to 3-4 paragraphs. Do not use generic filler phrases.`,
+Keep it to 3-4 paragraphs. Do not use generic filler phrases.
+
+IMPORTANT FORMAT RULES:
+- Start directly with "Dear Hiring Manager," — NO letter header, NO address block, NO date, NO placeholders like [Your Name] or [Your Address]
+- End with "Best regards," followed by the candidate's name on the next line
+- This is for online/email submission, NOT a physical letter
+- Do NOT include any bracketed placeholders`,
       },
       {
         role: "user",
@@ -91,7 +97,7 @@ Keep it to 3-4 paragraphs. Do not use generic filler phrases.`,
 Role: ${params.jobTitle} at ${params.company}
 Job Description: ${params.jobDescription}
 My Skills: ${params.userSkills.join(", ") || "General professional skills"}
-My Name: ${params.userName || "the candidate"}`,
+My Name: ${params.userName || "Kelson Brito"}`,
       },
     ],
   });
