@@ -5,6 +5,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { JobCard } from "@/components/JobCard";
 import { AnalyzeForm } from "@/components/AnalyzeForm";
 import { HowItWorks } from "@/components/HowItWorks";
+import { useLang } from "@/lib/LanguageContext";
 import {
   Briefcase,
   TrendingUp,
@@ -36,6 +37,7 @@ export default function DashboardPage() {
   const [applications, setApplications] = useState<Application[]>([]);
   const [loading, setLoading] = useState(true);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const { lang, t, toggle: toggleLang } = useLang();
 
   const fetchApplications = async () => {
     try {
@@ -90,21 +92,21 @@ export default function DashboardPage() {
 
   const stats = [
     {
-      label: "Total Applications",
+      label: t.totalApplications,
       value: totalApps,
       icon: Briefcase,
       color: "text-amber-400",
       bg: "bg-amber-400/10",
     },
     {
-      label: "Avg Match Score",
+      label: t.avgMatchScore,
       value: `${avgScore}%`,
       icon: TrendingUp,
       color: "text-yellow-400",
       bg: "bg-yellow-400/10",
     },
     {
-      label: "Interviews",
+      label: t.interviews,
       value: interviews,
       icon: Calendar,
       color: "text-amber-400",
@@ -130,6 +132,14 @@ export default function DashboardPage() {
 
           {/* Right side */}
           <div className="flex items-center gap-3">
+            {/* Language toggle */}
+            <button
+              onClick={toggleLang}
+              className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-300 transition hover:bg-white/10"
+              title="Toggle language / Alternar idioma"
+            >
+              {lang === "en" ? "🇧🇷 PT" : "🇺🇸 EN"}
+            </button>
             {status === "loading" ? (
               <div className="h-8 w-8 animate-pulse rounded-full bg-white/10" />
             ) : session ? (
@@ -176,7 +186,7 @@ export default function DashboardPage() {
                         className="flex w-full items-center gap-2 px-4 py-2 text-sm text-slate-300 transition hover:bg-white/5"
                       >
                         <Github className="h-4 w-4" />
-                        View GitHub Profile
+                        {t.viewGithub}
                         <ExternalLink className="ml-auto h-3 w-3 opacity-50" />
                       </a>
                     )}
@@ -209,12 +219,10 @@ export default function DashboardPage() {
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-white sm:text-3xl">
             {session
-              ? `Welcome back, ${session.user?.name?.split(" ")[0]} 👋`
-              : "Your Dashboard"}
+              ? t.welcomeBack(session.user?.name?.split(" ")[0] ?? "")
+              : t.dashboardTitle}
           </h1>
-          <p className="mt-1 text-sm text-slate-400">
-            Analyze jobs, track applications, and generate cover letters with AI.
-          </p>
+          <p className="mt-1 text-sm text-slate-400">{t.dashboardSub}</p>
         </div>
 
         {/* GitHub Profile Card */}
@@ -254,21 +262,21 @@ export default function DashboardPage() {
                 <p className="text-lg font-bold text-white">{session.user.publicRepos ?? 0}</p>
                 <div className="flex items-center gap-1 text-xs text-slate-400">
                   <BookOpen className="h-3 w-3" />
-                  Repos
+                  {t.repos}
                 </div>
               </div>
               <div>
                 <p className="text-lg font-bold text-white">{session.user.followers ?? 0}</p>
                 <div className="flex items-center gap-1 text-xs text-slate-400">
                   <Users className="h-3 w-3" />
-                  Followers
+                  {t.followers}
                 </div>
               </div>
               <div>
                 <p className="text-lg font-bold text-white">{session.user.following ?? 0}</p>
                 <div className="flex items-center gap-1 text-xs text-slate-400">
                   <Github className="h-3 w-3" />
-                  Following
+                  {t.following}
                 </div>
               </div>
             </div>
@@ -300,7 +308,7 @@ export default function DashboardPage() {
         <section className="mb-8">
           <div className="mb-4 flex items-center gap-2">
             <Sparkles className="h-5 w-5 text-amber-400" />
-            <h2 className="text-lg font-semibold text-white">Analyze a Job</h2>
+            <h2 className="text-lg font-semibold text-white">{t.analyzeSection}</h2>
           </div>
           <AnalyzeForm onApplicationCreated={fetchApplications} />
         </section>
@@ -311,7 +319,7 @@ export default function DashboardPage() {
             <div className="flex items-center gap-2">
               <Briefcase className="h-5 w-5 text-slate-400" />
               <h2 className="text-lg font-semibold text-white">
-                Your Applications
+                {t.applicationsSection}
               </h2>
               {totalApps > 0 && (
                 <span className="rounded-full bg-white/10 px-2 py-0.5 text-xs text-slate-400">
@@ -326,7 +334,7 @@ export default function DashboardPage() {
                 title="Export applications to CSV"
               >
                 <Download className="h-3.5 w-3.5" />
-                Export CSV
+                {t.exportCsv}
               </button>
             )}
           </div>
@@ -343,10 +351,8 @@ export default function DashboardPage() {
           ) : applications.length === 0 ? (
             <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-white/10 py-16 text-center">
               <Briefcase className="mb-3 h-10 w-10 text-slate-600" />
-              <p className="text-slate-400">No applications yet.</p>
-              <p className="mt-1 text-sm text-slate-500">
-                Analyze a job description above to get started.
-              </p>
+              <p className="text-slate-400">{t.noApplications}</p>
+              <p className="mt-1 text-sm text-slate-500">{t.noApplicationsSub}</p>
             </div>
           ) : (
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
