@@ -157,7 +157,7 @@ export default function DashboardPage() {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <Image src="/logo.png" alt="HireMe" width={56} height={56} className="object-contain" />
-            <span className="text-lg font-bold text-white">HireMe AI</span>
+            <Image src="/1.png" alt="HireMe AI" width={120} height={40} className="object-contain" />
             <span className="ml-1 rounded-full bg-amber-500/20 px-2 py-0.5 text-xs font-medium text-amber-400">
               Beta
             </span>
