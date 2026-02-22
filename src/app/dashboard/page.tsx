@@ -14,6 +14,9 @@ import {
   ChevronDown,
   Sparkles,
   Download,
+  Users,
+  BookOpen,
+  ExternalLink,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -159,10 +162,23 @@ export default function DashboardPage() {
                       <p className="text-sm font-medium text-white">
                         {session.user?.name}
                       </p>
-                      <p className="text-xs text-slate-400">
-                        {session.user?.email}
-                      </p>
+                      {session.user?.login && (
+                        <p className="text-xs text-teal-400">@{session.user.login}</p>
+                      )}
+                      <p className="text-xs text-slate-400">{session.user?.email}</p>
                     </div>
+                    {session.user?.githubUrl && (
+                      <a
+                        href={session.user.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex w-full items-center gap-2 px-4 py-2 text-sm text-slate-300 transition hover:bg-white/5"
+                      >
+                        <Github className="h-4 w-4" />
+                        View GitHub Profile
+                        <ExternalLink className="ml-auto h-3 w-3 opacity-50" />
+                      </a>
+                    )}
                     <button
                       onClick={() => signOut({ callbackUrl: "/" })}
                       className="flex w-full items-center gap-2 px-4 py-2 text-sm text-red-400 transition hover:bg-white/5"
@@ -199,6 +215,64 @@ export default function DashboardPage() {
             Analyze jobs, track applications, and generate cover letters with AI.
           </p>
         </div>
+
+        {/* GitHub Profile Card */}
+        {session?.user?.login && (
+          <div className="mb-8 flex flex-wrap items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur">
+            {session.user.image && (
+              <Image
+                src={session.user.image}
+                alt="GitHub avatar"
+                width={56}
+                height={56}
+                className="rounded-full ring-2 ring-teal-500/30"
+              />
+            )}
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-wrap items-center gap-2">
+                <p className="font-semibold text-white">{session.user.name}</p>
+                <a
+                  href={session.user.githubUrl ?? "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-teal-400 hover:underline flex items-center gap-1"
+                >
+                  @{session.user.login}
+                  <ExternalLink className="h-3 w-3" />
+                </a>
+              </div>
+              {session.user.bio && (
+                <p className="mt-0.5 text-sm text-slate-400 truncate">{session.user.bio}</p>
+              )}
+              {session.user.company && (
+                <p className="text-xs text-slate-500 mt-0.5">🏢 {session.user.company}</p>
+              )}
+            </div>
+            <div className="flex gap-5 text-center">
+              <div>
+                <p className="text-lg font-bold text-white">{session.user.publicRepos ?? 0}</p>
+                <div className="flex items-center gap-1 text-xs text-slate-400">
+                  <BookOpen className="h-3 w-3" />
+                  Repos
+                </div>
+              </div>
+              <div>
+                <p className="text-lg font-bold text-white">{session.user.followers ?? 0}</p>
+                <div className="flex items-center gap-1 text-xs text-slate-400">
+                  <Users className="h-3 w-3" />
+                  Followers
+                </div>
+              </div>
+              <div>
+                <p className="text-lg font-bold text-white">{session.user.following ?? 0}</p>
+                <div className="flex items-center gap-1 text-xs text-slate-400">
+                  <Github className="h-3 w-3" />
+                  Following
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Stats */}
         <div className="mb-8 grid gap-4 sm:grid-cols-3">
