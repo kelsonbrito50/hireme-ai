@@ -24,9 +24,21 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Candidate skills used for match score calculation
+  const USER_SKILLS = [
+    "Python", "Django", "Django REST Framework", "React", "JavaScript",
+    "TypeScript", "PostgreSQL", "Docker", "GitHub Actions", "AWS S3",
+    "Redis", "Celery", "JWT", "TailwindCSS", "HTML5", "CSS3", "Git",
+    "Next.js", "Node.js", "REST API", "CI/CD", "OWASP", "Pytest",
+  ];
+
+  const MIN_DESC_LENGTH = 100;
+  const descLength = jobDescription.trim().length;
+  const descTooShort = descLength > 0 && descLength < MIN_DESC_LENGTH;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!jobDescription.trim()) return;
+    if (!jobDescription.trim() || descLength < MIN_DESC_LENGTH) return;
 
     setLoading(true);
     setResult(null);
@@ -37,7 +49,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
       const res = await fetch("/api/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ jobDescription }),
+        body: JSON.stringify({ jobDescription, userSkills: USER_SKILLS }),
       });
 
       const data = await res.json();
@@ -128,17 +140,33 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
         </div>
 
         {/* Job description */}
-        <textarea
-          value={jobDescription}
-          onChange={(e) => setJobDescription(e.target.value)}
-          placeholder="Paste the full job description here…"
-          rows={6}
-          className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-teal-500"
-        />
+        <div>
+          <textarea
+            value={jobDescription}
+            onChange={(e) => setJobDescription(e.target.value)}
+            placeholder="Paste the full job description here (requirements, responsibilities, etc.)…"
+            rows={6}
+            className={`w-full resize-none rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-teal-500 ${
+              descTooShort ? "border-amber-500/50" : "border-white/10"
+            }`}
+          />
+          <div className="mt-1 flex justify-between text-xs">
+            {descTooShort ? (
+              <span className="text-amber-400">⚠️ Paste the full job description for accurate results</span>
+            ) : descLength >= MIN_DESC_LENGTH ? (
+              <span className="text-teal-400">✓ Good — description is long enough</span>
+            ) : (
+              <span className="text-slate-500">Paste the complete job description from LinkedIn/Indeed</span>
+            )}
+            <span className={descTooShort ? "text-amber-400" : "text-slate-500"}>
+              {descLength}/{MIN_DESC_LENGTH} min chars
+            </span>
+          </div>
+        </div>
 
         <button
           type="submit"
-          disabled={loading || !jobDescription.trim()}
+          disabled={loading || descLength < MIN_DESC_LENGTH}
           className="inline-flex items-center gap-2 rounded-xl bg-teal-500 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-400 disabled:opacity-50"
         >
           {loading ? (
