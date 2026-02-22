@@ -60,7 +60,7 @@ export default function LandingPage() {
         <div className="mx-auto flex max-w-6xl items-center justify-between">
           <div className="flex items-center gap-2">
             <Image src="/logo.png" alt="HireMe" width={56} height={56} className="object-contain" />
-            <span className="text-lg font-bold text-white">HireMe AI</span>
+            <Image src="/1.png" alt="HireMe AI" width={120} height={40} className="object-contain" />
           </div>
           <div className="flex items-center gap-2">
             <button
