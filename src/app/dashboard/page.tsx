@@ -13,6 +13,7 @@ import {
   LogOut,
   ChevronDown,
   Sparkles,
+  Download,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -63,6 +64,25 @@ export default function DashboardPage() {
   const interviews = applications.filter(
     (a) => a.status === "INTERVIEWING"
   ).length;
+
+  const exportToCSV = () => {
+    const headers = ["Job Title", "Company", "Status", "Match Score (%)", "Date Applied"];
+    const rows = applications.map((a) => [
+      `"${a.title}"`,
+      `"${a.company}"`,
+      a.status,
+      a.matchScore ?? "N/A",
+      new Date(a.createdAt).toLocaleDateString(),
+    ]);
+    const csv = [headers.join(","), ...rows.map((r) => r.join(","))].join("\n");
+    const blob = new Blob([csv], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "hireme-ai-applications.csv";
+    link.click();
+    URL.revokeObjectURL(url);
+  };
 
   const stats = [
     {
@@ -221,6 +241,16 @@ export default function DashboardPage() {
                 </span>
               )}
             </div>
+            {totalApps > 0 && (
+              <button
+                onClick={exportToCSV}
+                className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-slate-300 transition hover:bg-white/10"
+                title="Export applications to CSV"
+              >
+                <Download className="h-3.5 w-3.5" />
+                Export CSV
+              </button>
+            )}
           </div>
 
           {loading ? (
