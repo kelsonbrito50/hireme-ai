@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Loader2, Sparkles, Save, FileText } from "lucide-react";
 import { CoverLetterModal } from "@/components/CoverLetterModal";
+import { useLang } from "@/lib/LanguageContext";
 
 interface AnalyzeFormProps {
   onApplicationCreated?: () => void;
@@ -23,6 +24,8 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
   } | null>(null);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const { t } = useLang();
 
   // Candidate skills used for match score calculation
   const USER_SKILLS = [
@@ -128,14 +131,14 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
             type="text"
             value={jobTitle}
             onChange={(e) => setJobTitle(e.target.value)}
-            placeholder="Job title (e.g. Senior React Developer)"
+            placeholder={t.jobTitlePlaceholder}
             className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-amber-500"
           />
           <input
             type="text"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
-            placeholder="Company name"
+            placeholder={t.companyPlaceholder}
             className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-amber-500"
           />
         </div>
@@ -145,7 +148,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
           <textarea
             value={jobDescription}
             onChange={(e) => setJobDescription(e.target.value)}
-            placeholder="Paste the full job description here (requirements, responsibilities, etc.)…"
+            placeholder={t.descriptionPlaceholder}
             rows={6}
             className={`w-full resize-none rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder-slate-500 outline-none focus:border-amber-500 ${
               descTooShort ? "border-amber-500/50" : "border-white/10"
@@ -153,14 +156,14 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
           />
           <div className="mt-1 flex justify-between text-xs">
             {descTooShort ? (
-              <span className="text-amber-400">⚠️ Paste the full job description for accurate results</span>
+              <span className="text-amber-400">{t.descTooShort}</span>
             ) : descLength >= MIN_DESC_LENGTH ? (
-              <span className="text-amber-400">✓ Good — description is long enough</span>
+              <span className="text-amber-400">{t.descGood}</span>
             ) : (
-              <span className="text-slate-500">Paste the complete job description from LinkedIn/Indeed</span>
+              <span className="text-slate-500">{t.descHint}</span>
             )}
             <span className={descTooShort ? "text-amber-400" : "text-slate-500"}>
-              {descLength}/{MIN_DESC_LENGTH} min chars
+              {descLength}/{MIN_DESC_LENGTH} {t.minChars}
             </span>
           </div>
         </div>
@@ -175,7 +178,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
           ) : (
             <Sparkles className="h-4 w-4" />
           )}
-          {loading ? "Analyzing…" : "Analyze Job"}
+          {loading ? t.analyzingBtn : t.analyzeBtn}
         </button>
       </form>
 
@@ -192,7 +195,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
           <div className="flex items-center gap-4">
             <div className="text-center">
               <p className="text-4xl font-bold text-amber-400">{result.matchScore}%</p>
-              <p className="text-xs text-slate-500">Match Score</p>
+              <p className="text-xs text-slate-500">{t.matchScore}</p>
             </div>
             <p className="flex-1 text-sm text-slate-300">{result.summary}</p>
           </div>
@@ -217,7 +220,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
               className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/10 disabled:opacity-50"
             >
               <Save className="h-4 w-4" />
-              {saved ? "Saved ✓" : saving ? "Saving…" : "Save Application"}
+              {saved ? t.saved : saving ? t.saving : t.saveApplication}
             </button>
 
             <button
@@ -230,7 +233,7 @@ export function AnalyzeForm({ onApplicationCreated }: AnalyzeFormProps) {
               ) : (
                 <FileText className="h-4 w-4" />
               )}
-              {generating ? "Generating…" : "Generate Cover Letter"}
+              {generating ? t.generating : t.generateCoverLetter}
             </button>
           </div>
 
