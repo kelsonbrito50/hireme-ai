@@ -1,4 +1,8 @@
 <p align="center">
+  <img src="public/2.png" alt="HireMe AI" width="300" />
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Next.js-14-black?logo=next.js" alt="Next.js" />
   <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/OpenAI-GPT--4o--mini-412991?logo=openai&logoColor=white" alt="OpenAI" />
@@ -6,7 +10,7 @@
   <img src="https://img.shields.io/badge/TailwindCSS-3-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind" />
   <img src="https://img.shields.io/github/license/kelsonbrito50/hireme-ai" alt="License" />
   <a href="https://hireme-ai-rust.vercel.app">
-    <img src="https://img.shields.io/badge/Live%20Demo-hireme--ai.vercel.app-00C7B7?logo=vercel&logoColor=white" alt="Live Demo" />
+    <img src="https://img.shields.io/badge/Live%20Demo-hireme--ai--rust.vercel.app-00C7B7?logo=vercel&logoColor=white" alt="Live Demo" />
   </a>
 </p>
 
@@ -33,8 +37,9 @@
 
 ## 📸 Screenshots
 
+### Landing Page
 <p align="center">
-  <em>Screenshots coming soon — run the app locally to see it in action!</em>
+  <img src="docs/landing.png" alt="HireMe AI Landing Page" width="800" />
 </p>
 
 ---
