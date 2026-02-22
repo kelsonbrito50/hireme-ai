@@ -1,8 +1,5 @@
 "use client";
 
-import React from "react";
-"use client";
-
 import { useState } from "react";
 import { ChevronDown, ChevronUp, ClipboardCopy, Sparkles, Save, FileText } from "lucide-react";
 import { useLang } from "@/lib/LanguageContext";
