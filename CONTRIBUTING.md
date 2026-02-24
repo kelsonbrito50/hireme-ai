@@ -1,37 +1,90 @@
 # Contributing to HireMe AI
 
-Thank you for your interest in contributing! 🎉
+Thank you for your interest in contributing! 🎉 This document outlines how to get started.
 
 ## Getting Started
 
-1. Fork the repository
-2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/hireme-ai.git`
-3. Install dependencies: `npm install`
-4. Copy env: `cp .env.example .env.local`
-5. Start dev server: `npm run dev`
+### Prerequisites
 
-## Development Workflow
+- Node.js 18+
+- npm or yarn
+- Git
 
-1. Create a feature branch: `git checkout -b feat/your-feature`
-2. Make your changes
-3. Run tests: `npm test`
-4. Lint code: `npm run lint`
-5. Commit using [Conventional Commits](https://www.conventionalcommits.org/)
-6. Push and open a Pull Request
+### Local Setup
 
-## Commit Convention
+```bash
+# Clone the repo
+git clone https://github.com/kelsonbrito50/hireme-ai.git
+cd hireme-ai
 
-- `feat:` new feature
-- `fix:` bug fix
-- `docs:` documentation changes
-- `chore:` maintenance tasks
-- `test:` adding tests
-- `ci:` CI/CD changes
+# Install dependencies
+npm install
 
-## Code Style
+# Copy environment file
+cp .env.example .env.local
+# Fill in your environment variables
 
-This project uses Prettier and ESLint. Run `npm run lint` before committing.
+# Run database migrations
+npx prisma migrate dev
+
+# Start the dev server
+npm run dev
+```
+
+The app will be running at `http://localhost:3000`.
+
+## How to Contribute
+
+### Reporting Bugs
+
+- Check [existing issues](https://github.com/kelsonbrito50/hireme-ai/issues) first
+- Open a new issue using the **Bug Report** template
+- Include steps to reproduce, expected vs actual behavior, and environment info
+
+### Suggesting Features
+
+- Open a [Feature Request](https://github.com/kelsonbrito50/hireme-ai/issues/new) issue
+- Describe the use case and why it would benefit users
+
+### Submitting Pull Requests
+
+1. **Fork** the repository
+2. **Create a branch** from `main`:
+   ```bash
+   git checkout -b feat/your-feature-name
+   ```
+3. **Make your changes** with clear, focused commits
+4. **Run checks** locally:
+   ```bash
+   npm run lint
+   npm run build
+   ```
+5. **Push** and open a PR against `main`
+
+### Commit Style
+
+Follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+| Prefix | Use for |
+|--------|---------|
+| `feat:` | New features |
+| `fix:` | Bug fixes |
+| `docs:` | Documentation changes |
+| `chore:` | Maintenance tasks |
+| `ci:` | CI/CD changes |
+| `refactor:` | Code restructuring |
+
+### Code Style
+
+- TypeScript is required for all new code
+- Follow existing patterns in the codebase
+- Run `npm run lint` before committing
+- Components go in `/components`, utilities in `/lib`
+
+## Code of Conduct
+
+Please read our [Code of Conduct](CODE_OF_CONDUCT.md). We expect all contributors to abide by it.
 
 ## Questions?
 
-Open an issue and we'll help you out!
+Open a [Discussion](https://github.com/kelsonbrito50/hireme-ai/discussions) or reach out via GitHub issues.
