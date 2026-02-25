@@ -1,213 +1,165 @@
-<p align="center">
-  <img src="public/2.png" alt="HireMe AI" width="300" />
-</p>
+<div align="center">
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Next.js-14-black?logo=next.js" alt="Next.js" />
-  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/OpenAI-GPT--4o--mini-412991?logo=openai&logoColor=white" alt="OpenAI" />
-  <img src="https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma&logoColor=white" alt="Prisma" />
-  <img src="https://img.shields.io/badge/Neon-PostgreSQL-00E599?logo=neon&logoColor=white" alt="Neon" />
-  <img src="https://img.shields.io/badge/TailwindCSS-3-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind" />
-  <img src="https://img.shields.io/badge/NextAuth.js-Auth-purple?logo=nextdotjs&logoColor=white" alt="NextAuth" />
-  <img src="https://img.shields.io/badge/Zod-Validation-3E67B1?logo=zod&logoColor=white" alt="Zod" />
-  <img src="https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white" alt="Docker" />
-  <img src="https://img.shields.io/github/license/kelsonbrito50/hireme-ai" alt="License" />
-  <a href="https://hireme-ai-rust.vercel.app">
-    <img src="https://img.shields.io/badge/Live%20Demo-hireme--ai--rust.vercel.app-00C7B7?logo=vercel&logoColor=white" alt="Live Demo" />
-  </a>
-  <a href="https://github.com/kelsonbrito50/hireme-ai/actions/workflows/test.yml">
-    <img src="https://github.com/kelsonbrito50/hireme-ai/actions/workflows/test.yml/badge.svg" alt="Tests" />
-  </a>
-</p>
+# 🎯 HireMe AI
 
-<h1 align="center">🎯 HireMe AI</h1>
+### AI-powered job application tracker that gives developers an unfair advantage.
 
-<p align="center">
-  <strong>AI-powered job application tracker with skill matching, cover letter generation, and multilingual support.</strong><br />
-  Paste a job description → get a match score, extracted skills, and a tailored cover letter in seconds.<br /><br />
-  🔗 <a href="https://hireme-ai-rust.vercel.app"><strong>Live Demo → hireme-ai-rust.vercel.app</strong></a>
-</p>
+[![Next.js](https://img.shields.io/badge/Next.js_14-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white)](https://www.prisma.io/)
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
+[![OpenAI](https://img.shields.io/badge/OpenAI_GPT--4-412991?style=for-the-badge&logo=openai&logoColor=white)](https://openai.com/)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+
+<br/>
+
+## 🚀 [**→ LIVE DEMO ←**](https://hireme-ai-rust.vercel.app)
+
+<br/>
+
+> Stop guessing. Start landing interviews.
+
+</div>
 
 ---
 
-## ✨ Features
+## About
 
-### 🔍 AI-Powered Job Analysis
-- Paste any job description and instantly extract required skills using **GPT-4o-mini**
-- Get a **skill match score (0–100)** comparing your skills vs. job requirements
-- Receive an AI-generated **role summary** highlighting key responsibilities
-- Visual **circular progress ring** for match score display
+**HireMe AI** helps developers land jobs faster with AI-powered insights.
 
-### 📝 Smart Cover Letter Generation
-- One-click **tailored cover letters** that reference the specific role, company, and your skills
-- AI adapts tone and content based on the job description
-- Copy-to-clipboard functionality for quick applications
+Paste a job description. Get a skill match score from 0 to 100. Generate a tailored cover letter in seconds. Track every application in one clean dashboard. No more spreadsheets, no more guessing if you're a good fit — HireMe AI tells you exactly where you stand and gives you the tools to close the gap.
 
-### 📊 Application Dashboard
-- Track all your job applications in one place
-- **Stats cards**: total applications, average match score, interviews scheduled
-- **GitHub profile integration** — displays your repos, followers, and profile info
-- **Application status tracking**: Applied → Interviewing → Offered → Rejected
-- **CSV export** with formula-injection protection
-
-### 🌐 Multilingual (i18n)
-- Full **English and Portuguese** support
-- Language toggle in navbar with **localStorage persistence**
-- All UI strings internationalized — no hardcoded text
-
-### 🔐 Security & Authentication
-- **GitHub OAuth** via NextAuth.js with JWT sessions
-- **API route protection** — all endpoints require authentication (401 for unauthenticated)
-- **Per-IP rate limiting** — analyze: 10 req/min, cover-letter: 5 req/min
-- **Zod input validation** with max lengths on all endpoints
-- **Prompt injection mitigation** on OpenAI calls
-- **User data isolation** — applications filtered by session userId
-- Secure **JSON.parse error handling** on AI responses
-
-### 🎨 Modern UI/UX
-- Dark theme with custom **#f20107 red** brand palette
-- Responsive design built with **TailwindCSS**
-- **"How It Works"** step-by-step guide on the landing page
-- Click-outside handler for dropdown menus
-- Loading states and error handling throughout
-
-### 🐳 Docker Ready
-- **Docker Compose** setup with PostgreSQL
-- `output: standalone` Next.js build for optimized containers
-- One command to spin up the full stack
-
-### ✅ Testing & CI/CD
-- **Jest + ts-jest** unit tests (4/4 passing)
-- **GitHub Actions CI** — lint, type-check, build, and test on every PR
-- **Branch protection** — main requires PR review before merge
+Built for developers who are serious about their job search.
 
 ---
 
-## 📸 Screenshots
+## Features
 
-### Landing Page
-<p align="center">
-  <img src="docs/landing.png" alt="HireMe AI Landing Page" width="800" />
-</p>
-
-### Dashboard
-<p align="center">
-  <img src="docs/dashboard.png" alt="HireMe AI Dashboard" width="800" />
-</p>
-
-### Cover Letter Generation
-<p align="center">
-  <img src="docs/cover-letter.png" alt="HireMe AI Cover Letter" width="500" />
-</p>
-
-### Application Tracking
-<p align="center">
-  <img src="docs/applications.png" alt="HireMe AI Applications" width="500" />
-</p>
+### 🔍 Job Description Analyzer
+Paste any job posting and HireMe AI extracts key requirements, maps them against your profile, and surfaces the skills that matter most.
 
 ---
 
-## 🏗 Tech Stack
+### 📊 Skill Match Score (0–100)
+Get a precise compatibility score for every job. Understand exactly what's missing and what you already nail.
+
+---
+
+### ✉️ AI Cover Letter Generator
+Generate a polished, job-specific cover letter powered by GPT-4. Tailored to the role. Sounds like you, not a robot.
+
+---
+
+### 📋 Application Dashboard
+Track every application in one place — status, dates, notes, match scores. Full visibility over your pipeline.
+
+---
+
+### 📤 CSV Export
+Export your entire application history with one click. Own your data, feed your spreadsheets, import to anything.
+
+---
+
+### 🔐 GitHub OAuth
+One-click authentication via GitHub. No forms, no passwords, no friction.
+
+---
+
+## Tech Stack
 
 | Layer | Technology |
-|-------|-----------|
-| **Framework** | Next.js 14 (App Router, Server Components) |
-| **Language** | TypeScript 5 (strict mode) |
-| **AI Engine** | OpenAI GPT-4o-mini |
-| **Database** | PostgreSQL (Neon) + Prisma ORM |
-| **Auth** | NextAuth.js v4 (GitHub OAuth, JWT) |
-| **Validation** | Zod (schema-based input validation) |
-| **Styling** | TailwindCSS 3 + custom brand theme |
-| **Internationalization** | Custom React Context + i18n module |
-| **Rate Limiting** | Custom per-IP middleware |
-| **Testing** | Jest + ts-jest |
-| **CI/CD** | GitHub Actions (lint → type-check → build → test) |
-| **Hosting** | Vercel (frontend + serverless API) |
-| **Database Hosting** | Neon (serverless PostgreSQL) |
-| **Container** | Docker + Docker Compose |
+|---|---|
+| **Framework** | Next.js 14 (App Router) |
+| **Language** | TypeScript |
+| **Styling** | Tailwind CSS |
+| **Auth** | NextAuth.js + GitHub OAuth |
+| **ORM** | Prisma |
+| **Database** | Neon (serverless PostgreSQL) |
+| **AI** | OpenAI GPT-4 API |
+| **Deployment** | Vercel |
 
 ---
 
-## 🏛 Architecture
+## Architecture
 
 ```
-src/
-├── app/
-│   ├── api/
-│   │   ├── analyze/route.ts         # AI job analysis (GPT-4o-mini)
-│   │   ├── applications/route.ts    # CRUD — GET (list) + POST (create)
-│   │   ├── cover-letter/route.ts    # AI cover letter generation
-│   │   └── auth/[...nextauth]/      # GitHub OAuth handler
-│   ├── dashboard/page.tsx           # Main dashboard (protected)
-│   ├── layout.tsx                   # Root layout + providers
-│   ├── page.tsx                     # Landing page
-│   └── not-found.tsx                # Custom 404
-├── components/
-│   ├── AnalyzeForm.tsx              # Job description input + results
-│   ├── CoverLetterModal.tsx         # Generated cover letter modal
-│   ├── HowItWorks.tsx              # Step-by-step guide
-│   ├── JobCard.tsx                  # Application card component
-│   └── MatchScore.tsx              # Circular progress ring (SVG)
-├── lib/
-│   ├── auth.ts                      # NextAuth config + GitHub provider
-│   ├── auth-utils.ts                # Server-side session helpers
-│   ├── i18n.ts                      # English + Portuguese translations
-│   ├── LanguageContext.tsx           # React Context for language state
-│   ├── openai.ts                    # OpenAI client + prompt engineering
-│   ├── prisma.ts                    # Prisma singleton client
-│   ├── rate-limit.ts                # Per-IP rate limiter
-│   └── utils.ts                     # Shared utilities + status colors
-├── __tests__/
-│   └── analyze.test.ts              # API route tests (mocked auth)
-├── prisma/
-│   └── schema.prisma                # Database schema
-├── docker-compose.yml               # Full-stack Docker setup
-└── .github/workflows/ci.yml         # GitHub Actions CI pipeline
+┌─────────────────────────────────────────────────┐
+│                    Browser                       │
+│              (React / Tailwind CSS)              │
+└────────────────────┬────────────────────────────┘
+                     │ HTTP
+┌────────────────────▼────────────────────────────┐
+│              Next.js 14 App Router               │
+│  ┌─────────────┐   ┌──────────────────────────┐ │
+│  │ Server      │   │  Route Handlers (API)     │ │
+│  │ Components  │   │  /api/analyze             │ │
+│  │             │   │  /api/cover-letter        │ │
+│  │             │   │  /api/applications        │ │
+│  └─────────────┘   └──────────┬───────────────┘ │
+└─────────────────────────────┬─┴─────────────────┘
+                               │
+          ┌────────────────────┼─────────────────┐
+          │                    │                  │
+┌─────────▼──────┐  ┌──────────▼──────┐  ┌───────▼──────┐
+│  Prisma ORM    │  │  OpenAI GPT-4   │  │  NextAuth.js │
+│                │  │  (Analyze +     │  │  (GitHub     │
+│  Schema-first  │  │   Cover Letter) │  │   OAuth)     │
+└─────────┬──────┘  └─────────────────┘  └─────────────┘
+          │
+┌─────────▼──────┐
+│  Neon Database │
+│  (Serverless   │
+│   PostgreSQL)  │
+└────────────────┘
 ```
+
+**Request flow:**
+1. User authenticates via GitHub OAuth (NextAuth.js)
+2. React Server Components fetch data server-side — no unnecessary round trips
+3. Route Handlers proxy AI requests to OpenAI GPT-4
+4. Prisma handles all DB operations against Neon's serverless Postgres
+5. Everything deployed on Vercel's edge network
 
 ---
 
-## 🚀 Quick Start
+## Getting Started
 
 ### Prerequisites
 
-- Node.js 20+
-- PostgreSQL (or use Docker Compose, or Neon free tier)
-- OpenAI API key
-- GitHub OAuth App ([create one here](https://github.com/settings/developers))
+- Node.js 18+
+- A [Neon](https://neon.tech) account (free tier works)
+- A [GitHub OAuth App](https://github.com/settings/developers)
+- An [OpenAI API key](https://platform.openai.com/api-keys)
 
-### 1. Clone & Install
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/kelsonbrito50/hireme-ai.git
 cd hireme-ai
+```
+
+### 2. Install dependencies
+
+```bash
 npm install
 ```
 
-### 2. Configure Environment
+### 3. Set up environment variables
 
 ```bash
-cp .env.example .env
+cp .env.example .env.local
 ```
 
-Fill in your `.env`:
-```env
-DATABASE_URL="postgresql://user:pass@host/db"
-NEXTAUTH_URL="http://localhost:3000"
-NEXTAUTH_SECRET="generate-with: openssl rand -base64 32"
-OPENAI_API_KEY="sk-..."
-GITHUB_ID="your-github-oauth-app-id"
-GITHUB_SECRET="your-github-oauth-app-secret"
-```
+Fill in the values (see [Environment Variables](#environment-variables) below).
 
-### 3. Set Up Database
+### 4. Set up the database
 
 ```bash
+npx prisma generate
 npx prisma db push
 ```
 
-### 4. Run
+### 5. Run the development server
 
 ```bash
 npm run dev
@@ -215,126 +167,84 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-### Docker (Alternative)
+---
+
+## Environment Variables
+
+Create a `.env.local` file in the project root:
+
+```env
+# ─── Database ────────────────────────────────────────────
+DATABASE_URL="postgresql://user:password@host/dbname?sslmode=require"
+
+# ─── NextAuth.js ─────────────────────────────────────────
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-nextauth-secret-here"
+
+# ─── GitHub OAuth ─────────────────────────────────────────
+GITHUB_CLIENT_ID="your-github-client-id"
+GITHUB_CLIENT_SECRET="your-github-client-secret"
+
+# ─── OpenAI ───────────────────────────────────────────────
+OPENAI_API_KEY="sk-your-openai-api-key"
+```
+
+> ⚠️ Never commit real credentials. `.env.local` is already in `.gitignore`.
+
+### Getting each value
+
+| Variable | Where to get it |
+|---|---|
+| `DATABASE_URL` | Neon dashboard → Connection string |
+| `NEXTAUTH_SECRET` | Run `openssl rand -base64 32` |
+| `GITHUB_CLIENT_ID/SECRET` | GitHub → Settings → Developer settings → OAuth Apps |
+| `OPENAI_API_KEY` | [platform.openai.com/api-keys](https://platform.openai.com/api-keys) |
+
+---
+
+## Contributing
+
+Branch protection is active on `main`. All changes go through PRs.
 
 ```bash
-docker compose up -d
+# Create a feature branch
+git checkout -b feat/your-feature-name
+
+# Commit using conventional commits
+git commit -m "feat: add skill gap suggestions"
+
+# Open a PR against main
+git push origin feat/your-feature-name
 ```
 
 ---
 
-## 📡 API Reference
+## What I Learned
 
-All API routes require **GitHub OAuth authentication** via NextAuth.js. Unauthenticated requests receive `401 Unauthorized`.
+Building HireMe AI was a deep dive into integrating multiple complex systems into a cohesive product. Key takeaways:
 
-### `POST /api/analyze`
+**Next.js App Router patterns** — Adopting React Server Components from day one changed how I think about data fetching. Keeping data fetching on the server eliminated a whole class of loading states and reduced client-side JavaScript significantly.
 
-Analyze a job description against user skills. **Rate limit: 10 req/min per IP.**
+**Prompt engineering at scale** — Getting GPT-4 to produce consistently structured, useful output required iterating on prompts far more than expected. A well-crafted system prompt is worth more than a clever model tweak.
 
-**Request:**
-```json
-{
-  "jobDescription": "We are looking for a senior React developer...",
-  "userSkills": "React, TypeScript, Node.js"
-}
-```
+**Prisma + Neon as a serverless stack** — The combination is powerful but has nuances. Connection pooling with Neon's `?pgbouncer=true` flag is non-negotiable in a serverless environment where functions spin up cold.
 
-**Response:**
-```json
-{
-  "skills": ["React", "TypeScript", "GraphQL"],
-  "matchScore": 82,
-  "summary": "A senior frontend role focusing on React and TypeScript."
-}
-```
+**NextAuth.js session strategy** — Switching from JWT to database sessions (with Prisma adapter) gave me reliable, revocable sessions at the cost of a DB query per request — a trade-off worth understanding before committing to either.
 
-### `POST /api/cover-letter`
-
-Generate a tailored cover letter. **Rate limit: 5 req/min per IP.**
-
-**Request:**
-```json
-{
-  "jobTitle": "Senior Frontend Engineer",
-  "company": "Acme Corp",
-  "jobDescription": "...",
-  "userSkills": "React, TypeScript",
-  "userName": "Your Name"
-}
-```
-
-**Response:**
-```json
-{
-  "coverLetter": "Dear Hiring Manager at Acme Corp..."
-}
-```
-
-### `GET /api/applications`
-
-List all job applications for the authenticated user.
-
-### `POST /api/applications`
-
-Create a new job application entry.
-
-**Request:**
-```json
-{
-  "title": "Frontend Engineer",
-  "company": "Acme Corp",
-  "description": "...",
-  "matchScore": 85,
-  "skills": ["React", "TypeScript"]
-}
-```
+**Designing for developer UX** — Developers are the pickiest users. Every friction point gets noticed. Building something developers would actually use taught me to prioritize speed and clarity above all else.
 
 ---
 
-## 🔧 Environment Variables
+## License
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `DATABASE_URL` | PostgreSQL connection string (Neon recommended) | ✅ |
-| `NEXTAUTH_URL` | App URL (e.g., `https://your-app.vercel.app`) | ✅ |
-| `NEXTAUTH_SECRET` | Random secret for JWT signing | ✅ |
-| `OPENAI_API_KEY` | OpenAI API key for GPT-4o-mini | ✅ |
-| `GITHUB_ID` | GitHub OAuth App Client ID | ✅ |
-| `GITHUB_SECRET` | GitHub OAuth App Client Secret | ✅ |
+[MIT](./LICENSE) © [Kelson Brito](https://github.com/kelsonbrito50)
 
 ---
 
-## 🛡 Security
+<div align="center">
 
-- **Authentication** on all API routes (NextAuth.js + JWT)
-- **Input validation** via Zod schemas with max length constraints
-- **Rate limiting** per IP to prevent abuse
-- **Prompt injection mitigation** in OpenAI system prompts
-- **User data isolation** — each user sees only their own applications
-- **CSV export sanitization** — protects against formula injection attacks
-- **No secrets in code** — all credentials via environment variables
+Built with focus by **[Kelson Brito](https://github.com/kelsonbrito50)**
 
----
+⭐ If this helped you, star the repo.
 
-## 🤝 Contributing
-
-1. Fork the repo
-2. Create a feature branch (`git checkout -b feat/amazing-feature`)
-3. Commit changes (`git commit -m 'feat: add amazing feature'`)
-4. Push (`git push origin feat/amazing-feature`)
-5. Open a Pull Request
-
-All PRs run through **GitHub Actions CI** (lint → type-check → build → test).
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
-
----
-
-<p align="center">
-  Built with ☕ and AI by <a href="https://github.com/kelsonbrito50">Kelson Brito</a>
-</p>
-
+</div>
