@@ -16,6 +16,9 @@
   <a href="https://hireme-ai-rust.vercel.app">
     <img src="https://img.shields.io/badge/Live%20Demo-hireme--ai--rust.vercel.app-00C7B7?logo=vercel&logoColor=white" alt="Live Demo" />
   </a>
+  <a href="https://github.com/kelsonbrito50/hireme-ai/actions/workflows/test.yml">
+    <img src="https://github.com/kelsonbrito50/hireme-ai/actions/workflows/test.yml/badge.svg" alt="Tests" />
+  </a>
 </p>
 
 <h1 align="center">🎯 HireMe AI</h1>
