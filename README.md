@@ -4,6 +4,8 @@
 
 ### AI-powered job application tracker that gives developers an unfair advantage.
 
+[![CI](https://github.com/kelsonbrito50/hireme-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/kelsonbrito50/hireme-ai/actions) ![Tests](https://img.shields.io/badge/tests-76%20passed-brightgreen) ![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue)
+
 [![Next.js](https://img.shields.io/badge/Next.js_14-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white)](https://www.prisma.io/)
