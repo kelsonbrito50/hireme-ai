@@ -21,6 +21,10 @@
 
 </div>
 
+<p align="center">
+  <img src="docs/images/preview.png" alt="HireMe AI Preview" width="800" />
+</p>
+
 ---
 
 ## About
