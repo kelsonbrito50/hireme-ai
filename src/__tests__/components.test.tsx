@@ -1,4 +1,6 @@
-import { render, screen } from '@testing-library/react';
+/**
+ * @jest-environment jsdom
+ */
 
 // Simple smoke tests for component rendering
 describe('Component tests', () => {
