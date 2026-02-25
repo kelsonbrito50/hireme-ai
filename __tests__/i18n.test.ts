@@ -36,11 +36,11 @@ describe("translations", () => {
 
     it("steps is an array of 4 items", () => {
       expect(Array.isArray(t.steps)).toBe(true);
-      expect((t.steps as unknown[]).length).toBe(4);
+      expect((t.steps as unknown as unknown[]).length).toBe(4);
     });
 
     it("each step has title, desc, and tip", () => {
-      for (const step of t.steps as { title: string; desc: string; tip: string }[]) {
+      for (const step of t.steps as unknown as { title: string; desc: string; tip: string }[]) {
         expect(step).toHaveProperty("title");
         expect(step).toHaveProperty("desc");
         expect(step).toHaveProperty("tip");
